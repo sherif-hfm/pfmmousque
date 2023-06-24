@@ -1,0 +1,7 @@
+<!-- {{show}} -->
+<div *ngIf="show"  class="alert alert-dismissible fade show {{show}}" role="alert">
+    <ng-content></ng-content>
+    <button type="button" class="close" (click)="hide()">
+        <span>&times;</span>
+      </button>
+  </div>

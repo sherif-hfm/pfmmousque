@@ -1,0 +1,9 @@
+<div *ngIf="show" class="modalContainer" (click)="close()">
+    <div class="modalBox">
+        <div class="closeBtn">
+            <span class="material-symbols-outlined" style="font-size: 35px;font-weight:lighter ;">cancel</span>
+        </div>
+        <ng-content></ng-content>
+    </div>
+</div>
+

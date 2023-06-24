@@ -1,0 +1,269 @@
+.RmDatePicker-container {
+    position: relative;
+    display: inline-block;    
+    border: 1px solid #c4c4c4;
+    width: 300px;
+    height: 39px;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 1000;
+    font-size: 16px;
+}
+.RmDatePicker_container_Balady {
+    top:2px;
+    position: relative;
+    display: inline-block;
+    border: 0px solid #c4c4c4;
+    width: 100%;
+    height: 39px;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 1000;
+    font-size: 16px;
+}
+
+   /* .RmDatePicker-container:focus-within {
+        border: 1px solid #7bc1f7;
+        box-shadow: 0 0 8px #7bc1f7;
+        outline: 0;
+        webkit-box-shadow: 0 0 8px #7bc1f7;
+    }*/
+
+.RmDatePicker_container_focus {
+    border: 1px solid #7bc1f7;
+    box-shadow: 0 0 8px #7bc1f7;
+    outline: 0;
+    webkit-box-shadow: 0 0 8px #7bc1f7;
+}
+
+    .RmDatePicker-container .w3-input {
+        padding-right: 65px;
+    }
+
+.RmDatePicker-switch-btn {
+    height: 34px;
+    box-shadow: 0px 2px 7px -4px #000;
+}
+
+.RmDatePicker-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 34px;
+    top: 2px;
+    right: 2px;
+}
+
+
+
+.RmDatePicker-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fefefe;
+    -webkit-transition: .1s;
+    transition: .1s;
+    color: teal;
+    font-size: 18px;
+    line-height: 24px;
+    border: solid 1px #008080;
+    box-shadow: inset 0px 0px 5px -2px #444;
+}
+
+.RmDatePicker-slider-switch {
+    position: absolute;
+    content: "";
+    height: 33px;
+    width: 25px;
+    left: 0px;
+    bottom: 0px;
+    background-color: teal;
+    -webkit-transition: .1s;
+    transition: .1s;
+}
+
+.RmDatePicker-switch input:focus + .RmDatePicker-slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+.RmDatePicker-switch input:checked + .RmDatePicker-slider:before {
+    -webkit-transform: translateX(24px);
+    -ms-transform: translateX(24px);
+    transform: translateX(24px);
+}
+.RmDatePicker-Text-container {
+   
+    top: 2px;
+    right: 2px;
+}
+
+.RmDatePicker-Text {
+    font-family: 'Cairo', sans-serif;
+    font-weight: 1000;
+    font-size: 16px;
+    border: 0px solid #c4c4c4 !important;
+    height: 25px !important;
+    width: 200px !important;
+    padding-top: 4px !important;
+    margin: 4px;
+}
+    .RmDatePicker-Text:focus {
+        box-shadow: 0 0 0px #7bc1f7 !important;
+        outline: 0;
+        webkit-box-shadow: 0 0 0px #7bc1f7 !important;
+    }
+
+.RmDatePicker-btns {
+    padding-top: 5px;
+    font-size: 20px !important;
+    color: #297289;
+    position: absolute;
+    left: 7px;
+    top: 5px;
+    display: flex;
+}
+.RmDatePicker-btn {
+    padding-right: 5px;
+    cursor: pointer;
+}
+
+.RmDatePicker-popup {
+    z-index: 99999999999 !important;
+    position: absolute;
+    top:42px
+}
+
+.RmDatePicker-popup-view {
+    direction: rtl;
+    width: 300px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #009688;
+    border-radius:3px;
+}
+
+.RmDatePicker-month-header {
+    display: flex;
+    flex-direction: row-reverse;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #009688 !important;
+    height: auto;
+    color: #fff;
+    font-weight: bold;
+    font-size: 15px;
+}
+.RmDatePicker-years-list {
+    background-color: #009688 !important;
+    color: #fff;
+    font-weight: bold;
+    font-size: 15px;
+    border: 0;
+    padding: 6px;
+    width: 50%;
+    font-family: 'Cairo', sans-serif;
+}
+.RmDatePicker-year-item {
+    background-color: #FFF;
+    color: #4f85ae;
+    font-family: 'Cairo', sans-serif;
+}
+
+.RmDatePicker-month-item {
+    background-color: #FFF;
+    color: #4f85ae;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 800;
+}
+
+.RmDatePicker-months-list {
+    background-color: #009688 !important;
+    color: #fff;
+    font-weight: 800;
+    font-size: 15px;
+    border: 0;
+    padding: 6px;
+    width: 50%;
+    font-family: 'Cairo', sans-serif;
+}
+
+.RmDatePicker-Footer {
+    height: 20px;
+    background-color: #009688;
+}
+
+.monthView {
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px;
+    background-color: white;
+    font-family: 'Cairo', sans-serif;
+    font-size: 12px;
+}
+
+    .monthView .weekDays {
+        background-color: #009688;
+        color: white;
+        width: 42.80px;
+        text-align: center;
+        font-family: 'Cairo', sans-serif;
+        font-size: 12px;
+    }
+
+    .monthView .monthDay {
+        background-color: white;
+        color: #075483;
+        width: 42.70px;
+        height: 43px;
+        display: flex;
+        text-align: center;
+    }
+
+        .monthView .monthDay span {
+            font-family: 'Cairo', sans-serif;
+            font-size: 16px;
+            font-weight: normal;
+            width: 33px;
+            height: 33px;
+            margin: auto;
+        }
+
+            .monthView .monthDay span:hover {
+                border: 1px solid #156580;
+                border-radius: 50%;
+                background-color: #4f85ae;
+                color: #fff;
+                width: 33px;
+                height: 33px;
+                display: inline-block;
+                margin-top: 5px;
+            }
+
+    .monthView .currentDay span {
+        border: 1px solid #156580;
+        border-radius: 50%;
+        background-color: #009688 ;
+        color: #fff;
+        width: 33px;
+        height: 33px;
+        display: inline-block;
+        margin-top: 5px;
+    }
+
+    .monthView .selectedDay span {
+        border: 1px solid #156580;
+        border-radius: 50%;
+        background-color: #4f85ae;
+        color: #fff;
+        width: 33px;
+        height: 33px;
+        display: inline-block;
+        margin-top: 5px;
+    }
+
+.disabled {
+    pointer-events: none !important;
+    font-style: italic;
+    color: gray !important
+}

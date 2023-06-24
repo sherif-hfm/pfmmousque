@@ -1,0 +1,68 @@
+<div style="width: 100%;">
+  <div class="cards-container">
+    <div class="card main"  >
+      <div style="text-align:center"  >
+        <div style="font-size:35px ;font-weight: 600;margin-top: 10px;">
+           <span>{{umalquraCalendar.getCurrentDate().dayName}}</span>
+        </div>
+        <div style="font-size:25px ;">
+          <span>{{arabicNums.toArabicNum(umalquraCalendar.getCurrentDate().year + '/' + umalquraCalendar.getCurrentDate().month + '/' + umalquraCalendar.getCurrentDate().day)}} هـ</span>
+        </div>
+        <div style="font-size:25px ;">
+          <span>{{arabicNums.toArabicNum(getCurrentDateV2())}} م</span>
+        </div>
+        <div style="font-size:35px ;">
+          <span>{{arabicNums.toArabicNum(prayerTodayTotal)}}</span>
+        </div>
+        <div style="font-size:25px ;">
+          <span>جنازة</span>
+        </div>
+      </div>
+    </div>
+    <div class="card" *ngFor="let prayer of funeralList" >
+      <div style="text-align:center" *ngIf="prayer.Total > 0"  >
+        <div style="color:black;font-size:35px ;margin-top: 10px;">
+          صلاة <span>{{prayer.prayerName}}</span>
+        </div>
+        <div style="color:rgb(3, 48, 13);font-size:25px ;">
+          عدد الجنائز <span>{{toArabicNum(prayer.Total)}}</span>
+        </div>
+        <div class="info-container">
+          <div class="info" *ngIf="prayer.M > 0"> 
+            <div>رجال</div>
+            <div class="number">{{toArabicNum(prayer.M)}}</div>
+          </div>
+          <div class="info" *ngIf="prayer.F> 0">
+            <div>نساء</div>
+            <div class="number">{{toArabicNum(prayer.F)}}</div>
+          </div>
+          <div class="info" *ngIf="(prayer.B + prayer.G) > 0">
+            <div>اطفال</div>
+            <div class="number">{{toArabicNum(prayer.B + prayer.G)}}</div>
+          </div>
+        </div>
+        <div class="buttons">
+          <button class="btn" (click)="openDetailsPopup(prayer.prayerId)">عرض التفاصيل</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<modal [(show)]="showdetails">
+<div class="dtlContainer" *ngIf="showdetails">
+  <div class="dtltTitle">
+    <span>تفاصيل الجنائز</span>
+  </div>
+  <div style="display:grid;grid-template-columns: 50% 20% 30%;justify-content: space-between;">
+    <ng-container *ngFor="let funeral of funeralDetails">
+      <div>{{funeral.deadName}}</div>
+      <div>{{funeral.sex.Name}}</div>
+      <div>{{funeral.purialplace.placeName}}</div>
+    </ng-container>
+  </div>
+  <div style="width:300px;height:1px;background-color: rgb(117, 150, 90) ;margin-left: auto;margin-right: auto;margin-top: 10px;margin-bottom: 10px;"></div>
+    <div style="text-align:center ;font-size: 18px;font-weight: bold;color: rgb(117, 150, 90)">
+      رحمهم الله وأسكنهم فسيح جناته
+    </div>
+</div>
+</modal>

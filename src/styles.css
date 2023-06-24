@@ -1,0 +1,48 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* html, body { height: 100%; } */
+:root {
+     --appMedia:screen and (max-width: 991.98px);
+   }
+body { 
+    margin: 0;
+     font-family: 'Cairo',Roboto, "Helvetica Neue", sans-serif;
+     font-weight: 400;
+     direction: rtl;
+     }
+
+.container{
+     text-align: right; 
+}
+input[type=text] {     
+     box-sizing: border-box;
+     border: 1px solid gray;
+     transition: 0.1s;
+     outline: none;
+   }
+input[type=text]:focus {
+     border: 1px solid rgb(16 171 11) !important;
+     box-shadow: 0 0 5px rgb(16 171 11);
+   }
+   input[type=password] {     
+     box-sizing: border-box;
+     border: 1px solid gray;
+     transition: 0.1s;
+     outline: none;
+   }
+input[type=password]:focus {
+     border: 1px solid rgb(16 171 11) !important;
+     box-shadow: 0 0 5px rgb(16 171 11);
+   }
+select{
+     box-sizing: border-box;
+     border: 1px solid gray;
+     transition: 0.1s;
+     outline: none;
+   }
+
+   select:focus {
+     border: 1px solid rgb(16 171 11) !important;
+     box-shadow: 0 0 5px rgb(16 171 11);
+   }
+

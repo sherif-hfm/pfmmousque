@@ -1,0 +1,68 @@
+.container{
+    width: 100%;
+}
+.cards-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.card{
+width: 90%;
+height: 250px;
+border-style:solid ;
+border-width:2px ;
+border-color: rgb(18, 161, 18);
+margin: 20px;
+background-color:white;
+font-family: 'Cairo', sans-serif;
+font-size: 24px;
+box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3)  ; 
+}
+.card.main{
+    background-color:rgb(37 90 37);
+    color: white;
+    background-image: url(/assets/images/cardbg.png);
+}
+
+.info-container{
+    display: flex;
+    justify-content: space-around;
+}
+.info{
+    margin: 10px;
+    font-size: 20px;
+}
+.number{
+    color: red;
+    font-size: 30px;
+}
+.buttons{
+  font-family: 'Cairo', sans-serif;
+  font-weight: 800 !important;
+  font-size: 24px;
+}
+.btn{
+    background-color: green;
+    color: white;
+}
+
+.dtlContainer{
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .dtltTitle{
+    text-align: center;
+    color: rgb(117, 150, 90);
+    font-family: 'Cairo', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    padding-bottom: 30px;
+  }
+  
+  @media screen and (max-width: 990px){
+    .dtlContainer{
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+  }

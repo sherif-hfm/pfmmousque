@@ -1,0 +1,39 @@
+.modalContainer{
+    position: fixed;
+    display: flex;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999999;
+    background-color: rgb(109, 125, 141,0.5);
+}
+
+.modalBox{
+    position: relative;
+    padding: 15px;
+    background-color: white;
+    width: 35%;
+    height: fit-content;
+    margin: auto;
+    border-style:solid ;
+    border-width: 1px;
+    border-color: black;
+    box-shadow: 0 5px 10px rgb(40 64 37 / 50%);
+
+}
+.closeBtn{
+    position: relative;
+    top: 0;
+    right: 0;
+    font-size: 25px;
+
+    cursor: pointer;
+}
+
+@media screen and (max-width: 990px){
+    .modalBox{
+        width: 100%;
+    }
+}
+

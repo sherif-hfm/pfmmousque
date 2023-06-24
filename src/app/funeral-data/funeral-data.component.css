@@ -1,0 +1,152 @@
+.container{
+    width: 100%;
+}
+.search{
+    width: 100%;
+    margin: auto;
+    margin-bottom: 20px;
+}
+.details{
+    width: 100%;
+    /* margin: auto;     */
+}
+.title{
+    width: 100%;
+    text-align: center;
+    font-size:35px;
+    font-weight: bold;
+    color:rgb(3, 48, 13);
+}
+.searchForm{
+    color:rgb(3, 48, 13);
+    font-size:18px;
+}
+
+  .btn{
+      margin-right: 15px;
+      min-width: 80px;
+      padding: 0;
+  }
+  .btn-success{
+    background-color: green;
+    color: white;
+  }
+  .btn-danger{
+    background-color: red;
+    color: white;
+  }
+
+.dataGrid{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 20% 20% 20% 10% 10% 20%;
+    /* row-gap: 1rem; */
+    color:rgb(3, 48, 13);
+    font-size:18px;
+}
+
+
+.header{
+  font-weight: bold;
+}
+
+.gridCell{
+   border-bottom-style:solid ;
+   border-bottom-width: 1px;
+   border-color:gray ;
+   padding-bottom: 10px;
+   padding-top: 10px;
+   text-align: right;
+    
+}
+.oddGridCell{
+background-color:rgb(231, 245, 231,0.7);
+
+}
+
+.mobileTitle{
+    display: none;
+}
+.rowButtons{
+   
+}
+
+.editFormContainer{
+    width: 50%;
+    color:rgb(3, 48, 13);
+    font-size:18px;
+    margin: auto;
+    border-style:solid ;
+    border-width:2px ;
+    border-color: rgb(18, 161, 18);
+    background-color:white;
+    font-family: 'Cairo', sans-serif;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3)  ; 
+    padding: 30px;
+}
+.editFormContainer .title{
+    width: 100%;
+    text-align: center;
+    font-size:25px;
+    font-weight: bold;
+    color:rgb(3, 48, 13);
+
+   
+}
+.editForm{
+    padding-top: 20px;
+    width: 50%;
+    margin: auto;
+}
+.inputContainer{
+    
+}
+.inputLable{
+    display: block;
+}
+.input{
+    width: 300px;
+}
+.formButtons{
+    text-align: center;
+}
+
+@media screen and (max-width: 990px){
+.dataGrid{
+    display: grid;
+    width: 100%;
+    grid-template-columns: 100% ;
+}
+.header{
+ display: none; 
+}
+.gridCell{
+    border-width: 0px;
+    padding: 0px;
+ }
+ .oddGridCell{
+    background-color:transparent
+    }
+.mobileTitle{
+    display:inline;
+    font-weight: bold;
+}
+.details{
+    width: 100%;
+} 
+.rowButtons{
+   text-align: center;
+   border-bottom-style:solid ;
+   border-bottom-width: 1px;
+   padding-bottom: 10px;
+} 
+.editFormContainer{
+    width: 100%;
+   
+}
+.editForm{
+    padding-top: 20px;
+    width: 100%;
+    margin: auto;
+}
+}

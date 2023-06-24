@@ -1,0 +1,188 @@
+
+
+.topInfo{
+  height: 30px;
+  width: 100%;
+  background-color: green;
+}
+.header{
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 5px 41.5px rgb(40 64 37 / 50%);
+  z-index: 9999999;
+}
+.headerLogoTitle{
+display: flex;
+width: 50%;
+min-width: 380px;
+}
+
+.headerLogo{
+  text-align: center;
+}
+.headerLogo >img{
+  width: 100px;
+}
+.headerTitle{
+  color: rgb(117, 150, 90);
+  font-family: 'Cairo', sans-serif;
+  font-weight: 600;
+  font-size: 30px;
+  width: 70%;
+  margin: auto;
+  padding-right: 10px;
+}
+.headerMenuIcon{
+visibility: hidden;
+}
+
+.headerSubTitle{
+  font-size: 20px;
+  display: block;
+}
+
+.headerNav{
+  display: flex;
+  width: 50%;
+  margin: auto;
+  padding-left:25px
+
+}
+.rightNav{
+  display: flex;
+  text-align: right;
+  flex-grow: 1;
+  justify-content: right;
+}
+.navItem{
+  display: block;
+  color:rgb(117, 150, 90);
+  font-family: 'Cairo', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  display: grid;
+  text-align: center;
+  text-decoration:none;
+  padding-left: 20px;
+  padding-right: 20px;
+  cursor:pointer;
+}
+.navItem i{
+  font-size: 40px;
+  
+}
+.spaceNav{
+/* width: 65%; */
+flex-grow: 1;
+}
+.leftNav{
+  display: flex;
+  text-align: left;
+  flex-grow: 1;
+  justify-content:left;
+}
+.statContainer{
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.statTitle{
+  text-align: center;
+  color: rgb(117, 150, 90);
+  font-family: 'Cairo', sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+}
+.statSubTitle{
+  text-align: center;
+  color: rgb(117, 150, 90);
+  font-family: 'Cairo', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+}
+.statNum{
+  color: red;
+  text-align: center;
+}
+
+@media screen and (max-width: 990px){
+.header{
+display: block;
+box-shadow:none;
+}
+.headerLogoTitle{
+  display: flex;
+  width: 100%;
+  border-bottom-width:0.5px ;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(171, 197, 150); 
+  height: 115px;
+  }
+  .headerLogoTitleShadow{
+    box-shadow: 0 5px 10px rgb(40 64 37 / 50%);
+  }
+
+  .headerLogo >img{
+    width: 75px;
+  }
+
+  .headerMenuIcon{
+    visibility:visible;
+    color: rgb(117, 150, 90);
+    font-size: 20px;
+    margin: 10px;
+  }
+  .headerTitle{
+    font-size: 20px;    
+  }
+  .headerSubTitle{
+    font-size: 17px;
+  }
+  .headerNav{
+    visibility: hidden;
+    display: block;
+    position: absolute;
+    background-color: white;
+    width: 100%;
+    padding: 10px;
+    opacity: 0;
+  transition: visibility 0s linear 300ms, opacity 300ms;
+  }
+  .headerNav.show{
+    visibility: visible ;
+    opacity: 1;
+    transition: visibility 0s linear 0s, opacity 300ms;
+  }
+
+  .rightNav{
+    display: block;
+    text-align: right;
+      }
+  .navItem{
+    display: block;
+    font-size: 20px;
+    text-align: right;
+    margin-top:10px ;
+  }
+  .navItem:hover{
+    background-color: gainsboro
+  }
+
+  .navItem i{
+    font-size: 20px;
+    
+  }
+  .leftNav{
+    display: block;
+    text-align: right;
+  }
+
+  .statContainer{
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+}
+

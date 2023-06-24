@@ -1,0 +1,52 @@
+<div  style="display:inline-block;vertical-align: middle;"  >
+   
+<div class="RmDatePicker-container" [ngClass]="{disabled:ReadOnly}"   >
+    <div style="display:flex;flex-direction:row">
+        <div class="RmDatePicker-switch-btn">
+            <div class="RmDatePicker-switch">
+                <div class="RmDatePicker-slider" (click)="calendarTypeClick()">
+                    <span class="RmDatePicker-slider-switch" [ngStyle]="{transform:CurrentCalendarType==1?'translateX(24px)':''}"></span>
+                    <span style="float: right; padding: 0 4px;" >هـ</span>
+                    <span style="float: left; padding: 0 4px;" >م</span>
+                </div>
+            </div>
+        </div>
+        <div class="RmDatePicker-Text-container" (click)="show($event)">
+            <input type="text"  placeholder="يوم/شهر/سنة"  readonly  [value]="getSelectedDate()" class="RmDatePicker-Text" autocomplete="off" >
+        </div>
+        <div class="RmDatePicker-btns">
+            <span class="material-icons RmDatePicker-btn" *ngIf="SelectedDate != null"  (click)="clearDate($event)"></span>
+            <span class="material-icons RmDatePicker-btn" (click)="show($event)">calendar_month</span>
+        </div>
+    </div>
+        <!-- <popup   :ptop="popupTop" :pleft="popupLeft" :pshow="isShow" :pmindate="minDate" :pmaxdate="maxDate" 
+            v-model="selectedDate"  :pcalendartype="calendartype" :defaultdate="defaultDate"></popup> -->
+            <div class="RmDatePicker-popup"  (click)="popup_click($event)" *ngIf="!popupDisplay">
+                <div class="RmDatePicker-popup-view" style="width: 300px;" >
+                    <div class="RmDatePicker-month-header">                        
+                        <select class="RmDatePicker-months-list"  value="selectedMonthIndex">
+                            <option class="RmDatePicker-month-item" *ngFor="let month of getMonths()" [value]="month.index">{{arabicNums(month.index + 1)}}&nbsp;&nbsp;{{month.name}}</option>
+                        </select>
+                        <select class="RmDatePicker-years-list" [(ngModel)]="selectedYear">
+                            <option class="RmDatePicker-year-item" *ngFor="let year of getYears()" [value]="year" >{{arabicNums(year)}}</option>
+                        </select>
+                    </div>
+                    <div class="monthView" (wheel)="wheel($event)">
+                        <span class="weekDays">سبت</span>
+                        <span class="weekDays">أحد</span>
+                        <span class="weekDays">اثنين</span>
+                        <span class="weekDays">ثلاثاء</span>
+                        <span class="weekDays">أربعاء</span>
+                        <span class="weekDays">خميس</span>
+                        <span class="weekDays">جمعة</span>
+                        <span class="monthDay" *ngFor="let day of getDays()" [ngClass]="{disabled:day.isDisabled,currentDay:day.isCurrentDay,selectedDay:day.isSelectedDay}">
+                            <span (click)="dayClick(day.no)">
+                                <p style="margin-top:5px" >{{day.no}}</p>
+                            </span>
+                        </span>
+                    </div>
+                    <div class="RmDatePicker-Footer"></div>
+                </div>
+            </div>
+    </div>
+</div>
