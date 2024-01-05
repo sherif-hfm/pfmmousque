@@ -1,0 +1,53 @@
+
+<!-- التقرير الشهري -->
+<div class="container">
+    <div class="title">
+        <span>تقرير الجنائز بالشهر</span>
+    </div>
+    <div class="search">
+        <div class="searchForm">
+            <label style="display:block">العام</label>
+            <input type="text" [(ngModel)]="searchYear">
+            <button class="btn btn-success" (click)="search()">بحث</button>
+        </div>
+    </div>
+    <div class="details" >
+            <div class="dataGrid">
+                <div class="gridCell header">الشهر</div>
+                <div class="gridCell header">الرجال</div>
+                <div class="gridCell header">النساء</div>
+                <div class="gridCell header">الاولاد</div>
+                <div class="gridCell header">البنات</div>                
+                <div class="gridCell header">الاجمالي</div>                
+                <ng-container  *ngFor="let funeral of funeralList; let i = index">
+                    <div class="gridCell" [ngClass]="{'oddGridCell':(i % 2) > 0}">
+                        <label class="mobileTitle">الشهر :</label>
+                        {{funeral.month}}
+                    </div>
+                    <div class="gridCell" [ngClass]="{'oddGridCell':(i % 2) > 0}">
+                        <label class="mobileTitle">الرجال :</label>
+                        {{arabicNums.toArabicNum(funeral.man)}}
+                    </div>
+                    <div class="gridCell" [ngClass]="{'oddGridCell':(i % 2) > 0}">
+                        <label class="mobileTitle">النساء :</label>
+                        {{arabicNums.toArabicNum(funeral.woman)}}
+                    </div>
+                    <div class="gridCell" [ngClass]="{'oddGridCell':(i % 2) > 0}">
+                        <label class="mobileTitle">الاولاد :</label>
+                        {{arabicNums.toArabicNum(funeral.boy)}}
+                    </div>
+                    <div class="gridCell" [ngClass]="{'oddGridCell':(i % 2) > 0}">
+                        <label class="mobileTitle">البنات :</label>
+                        {{arabicNums.toArabicNum(funeral.girl)}}
+                    </div>
+                    <div class="gridCell" [ngClass]="{'oddGridCell':(i % 2) > 0}">
+                        <label class="mobileTitle">الاجمالي :</label>
+                        {{arabicNums.toArabicNum(funeral.total)}}
+                    </div>
+                    <div class="gridCell rowButtons" [ngClass]="{'oddGridCell':(i % 2) > 0}">
+                        
+                    </div>
+                </ng-container>
+            </div>
+    </div>
+</div>

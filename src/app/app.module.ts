@@ -18,6 +18,7 @@ import { AppHttpInterceptor } from './app-http.interceptor';
 import { AlertComponent } from './alert/alert.component';
 import { ModalComponent } from './modal/modal.component';
 import { FooterComponent } from './footer/footer.component';
+import { MonthlyReportComponent } from './monthly-report/monthly-report.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { FooterComponent } from './footer/footer.component';
     FuneralDataComponent,
     AlertComponent,
     ModalComponent,
-    FooterComponent
+    FooterComponent,
+    MonthlyReportComponent
   ],
   imports: [
     BrowserModule,
