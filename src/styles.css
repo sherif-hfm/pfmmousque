@@ -3,7 +3,10 @@
 /* html, body { height: 100%; } */
 :root {
      --appMedia:screen and (max-width: 991.98px);
+     --mainTextColor: rgb(14, 62, 194);
+     --secondTextColor: rgb(102, 139, 243);
    }
+   
 body { 
     margin: 0;
      font-family: 'Cairo',Roboto, "Helvetica Neue", sans-serif;
@@ -21,8 +24,8 @@ input[type=text] {
      outline: none;
    }
 input[type=text]:focus {
-     border: 1px solid rgb(16 171 11) !important;
-     box-shadow: 0 0 5px rgb(16 171 11);
+     border: 1px solid var(--mainTextColor) !important;
+     box-shadow: 0 0 5px var(--mainTextColor);
    }
    input[type=password] {     
      box-sizing: border-box;
@@ -31,8 +34,8 @@ input[type=text]:focus {
      outline: none;
    }
 input[type=password]:focus {
-     border: 1px solid rgb(16 171 11) !important;
-     box-shadow: 0 0 5px rgb(16 171 11);
+     border: 1px solid var(--mainTextColor) !important;
+     box-shadow: 0 0 5px var(--mainTextColor);
    }
 select{
      box-sizing: border-box;
@@ -42,7 +45,7 @@ select{
    }
 
    select:focus {
-     border: 1px solid rgb(16 171 11) !important;
-     box-shadow: 0 0 5px rgb(16 171 11);
+     border: 1px solid var(--mainTextColor) !important;
+     box-shadow: 0 0 5px var(--mainTextColor);
    }
 

@@ -12,7 +12,6 @@ width: 90%;
 height: 250px;
 border-style:solid ;
 border-width:2px ;
-border-color: rgb(18, 161, 18);
 margin: 20px;
 background-color:white;
 font-family: 'Cairo', sans-serif;
@@ -20,7 +19,7 @@ font-size: 24px;
 box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3)  ; 
 }
 .card.main{
-    background-color:rgb(37 90 37);
+    background-color:var(--mainTextColor);
     color: white;
     background-image: url(/assets/images/cardbg.png);
 }

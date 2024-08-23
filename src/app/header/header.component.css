@@ -27,7 +27,7 @@ min-width: 380px;
   width: 100px;
 }
 .headerTitle{
-  color: rgb(117, 150, 90);
+  color:var(--mainTextColor);
   font-family: 'Cairo', sans-serif;
   font-weight: 600;
   font-size: 30px;
@@ -59,7 +59,7 @@ visibility: hidden;
 }
 .navItem{
   display: block;
-  color:rgb(117, 150, 90);
+  color:var(--mainTextColor);
   font-family: 'Cairo', sans-serif;
   font-weight: 600;
   font-size: 20px;
