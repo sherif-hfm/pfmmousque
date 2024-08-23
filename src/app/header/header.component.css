@@ -3,7 +3,7 @@
 .topInfo{
   height: 30px;
   width: 100%;
-  background-color: green;
+  background-color: var(--secondTextColor);
 }
 .header{
   width: 100%;
@@ -90,14 +90,14 @@ flex-grow: 1;
 }
 .statTitle{
   text-align: center;
-  color: rgb(117, 150, 90);
+  color: var(--mainTextColor);
   font-family: 'Cairo', sans-serif;
   font-weight: 800;
   font-size: 18px;
 }
 .statSubTitle{
   text-align: center;
-  color: rgb(117, 150, 90);
+  color: var(--mainTextColor);
   font-family: 'Cairo', sans-serif;
   font-weight: 400;
   font-size: 14px;

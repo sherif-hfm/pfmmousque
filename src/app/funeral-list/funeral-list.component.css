@@ -42,7 +42,7 @@ box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3)  ;
   font-size: 24px;
 }
 .btn{
-    background-color: green;
+    background-color: var(--secondTextColor);
     color: white;
 }
 
@@ -52,7 +52,7 @@ box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3)  ;
   }
   .dtltTitle{
     text-align: center;
-    color: rgb(117, 150, 90);
+    color: var(--mainTextColor);
     font-family: 'Cairo', sans-serif;
     font-weight: 800;
     font-size: 18px;
