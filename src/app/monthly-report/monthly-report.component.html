@@ -22,7 +22,7 @@
                 <ng-container  *ngFor="let funeral of funeralList; let i = index">
                     <div class="gridCell" [ngClass]="{'oddGridCell':(i % 2) > 0}">
                         <label class="mobileTitle">الشهر :</label>
-                        {{funeral.monthName}}
+                        {{funeral.month}}
                     </div>
                     <div class="gridCell" [ngClass]="{'oddGridCell':(i % 2) > 0}">
                         <label class="mobileTitle">الرجال :</label>
