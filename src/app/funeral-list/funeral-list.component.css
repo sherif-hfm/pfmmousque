@@ -9,19 +9,31 @@
 }
 .card{
 width: 90%;
-height: 250px;
+min-height: 250px;
+max-height: 100%;
 border-style:solid ;
 border-width:2px ;
 margin: 20px;
 background-color:white;
 font-family: 'Cairo', sans-serif;
 font-size: 24px;
-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3)  ; 
+box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3)  ;
+box-sizing: border-box;
+overflow: hidden;
+padding: 12px;
 }
 .card.main{
     background-color:var(--mainTextColor);
     color: white;
     background-image: url(/assets/images/cardbg.png);
+}
+.card.main .location-link{
+    color: rgba(255, 255, 255, 0.95);
+    text-decoration: none;
+}
+.card.main .location-link:hover{
+    color: white;
+    text-decoration: underline;
 }
 
 .info-container{
