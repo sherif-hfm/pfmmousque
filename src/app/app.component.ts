@@ -10,15 +10,17 @@ import { filter } from 'rxjs/operators';
 export class AppComponent {
   minheight: number = window.screen.availHeight;
   title = 'pfmmousque';
+  showHeaderFooter: boolean = true;
 
   constructor(private router: Router) {
-    this.updateMinHeight(this.router.url);
+    this.updateLayout(this.router.url);
     this.router.events.pipe(
       filter((e): e is NavigationEnd => e instanceof NavigationEnd)
-    ).subscribe(e => this.updateMinHeight(e.url));
+    ).subscribe(e => this.updateLayout(e.url));
   }
 
-  private updateMinHeight(url: string): void {
+  private updateLayout(url: string): void {
     this.minheight = url.includes('/login') ? 0 : window.screen.availHeight;
+    this.showHeaderFooter = !url.includes('/today-view');
   }
 }

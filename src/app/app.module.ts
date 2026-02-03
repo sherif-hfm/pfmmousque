@@ -19,6 +19,7 @@ import { AlertComponent } from './alert/alert.component';
 import { ModalComponent } from './modal/modal.component';
 import { FooterComponent } from './footer/footer.component';
 import { MonthlyReportComponent } from './monthly-report/monthly-report.component';
+import { TodayViewComponent } from './today-view/today-view.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { MonthlyReportComponent } from './monthly-report/monthly-report.componen
     AlertComponent,
     ModalComponent,
     FooterComponent,
-    MonthlyReportComponent
+    MonthlyReportComponent,
+    TodayViewComponent
   ],
   imports: [
     BrowserModule,

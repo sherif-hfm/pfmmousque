@@ -64,4 +64,9 @@ export class FuneralService {
     console.log('deleteFuneral');
     return this.http.delete(this.settings.ApiBaseUrl + '/funeral/del/' + id );
   }
+
+  getTodayDetails(){
+    console.log('getTodayDetails');
+    return this.http.get( this.settings.ApiBaseUrl +  '/funeral/today-details' ,{observe:'body',responseType:'json'});
+  }
 }

@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { FuneralDataComponent } from './funeral-data/funeral-data.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import {  MonthlyReportComponent } from './monthly-report/monthly-report.component';
+import { TodayViewComponent } from './today-view/today-view.component';
 import { AuthService } from './services/auth.service';
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'admin', component: FuneralDataComponent,canActivate: [AuthService] },
   { path: 'monthlyReport', component: MonthlyReportComponent,canActivate: [AuthService] },
+  { path: 'today-view', component: TodayViewComponent },
    { path: '**', component: PageNotFoundComponent }  // Wildcard route for a 404 page
 
 ];

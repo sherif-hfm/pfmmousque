@@ -1,6 +1,6 @@
 
 
-<app-header></app-header>
+<app-header *ngIf="showHeaderFooter"></app-header>
 <!-- <app-angular></app-angular> -->
 
 
@@ -11,12 +11,12 @@
 </svg> -->
 
 
-<div style="height:50px;width: 100px;"></div> 
+<div style="height:50px;width: 100px;" *ngIf="showHeaderFooter"></div> 
 <div style="min-height: {{minheight}}px;">
   <router-outlet ></router-outlet>
 </div>
   
   
-  <app-footer></app-footer>
+  <app-footer *ngIf="showHeaderFooter"></app-footer>
 
 

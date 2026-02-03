@@ -1,0 +1,395 @@
+.today-view-container {
+  direction: rtl;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+  padding-bottom: 40px;
+  padding-top: 120px; /* Space for fixed header */
+}
+
+/* Sticky Header */
+.sticky-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: linear-gradient(135deg, var(--mainTextColor) 0%, #1a4a9e 100%);
+  color: white;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.header-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.header-dates {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hijri-date {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.gregorian-date {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+/* Loading State */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #e0e0e0;
+  border-top: 4px solid var(--mainTextColor);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #666;
+}
+
+/* Error State */
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.error-icon {
+  font-size: 50px;
+  color: #e74c3c;
+  margin-bottom: 15px;
+}
+
+.error-text {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.retry-btn {
+  background: var(--mainTextColor);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.retry-btn:hover {
+  background: var(--secondTextColor);
+  transform: translateY(-2px);
+}
+
+/* No Data State */
+.no-data-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.no-data-icon {
+  font-size: 60px;
+  color: #bbb;
+  margin-bottom: 15px;
+}
+
+.no-data-text {
+  font-size: 20px;
+  color: #888;
+}
+
+/* Content Container */
+.content-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Total Summary */
+.total-summary {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.total-label {
+  font-size: 18px;
+  color: #666;
+}
+
+.total-number {
+  font-size: 40px;
+  font-weight: bold;
+  color: var(--mainTextColor);
+  display: block;
+  margin: 5px 0;
+}
+
+.total-unit {
+  font-size: 18px;
+  color: #666;
+}
+
+/* Prayer Group */
+.prayer-group {
+  margin-bottom: 30px;
+}
+
+.prayer-header {
+  background: linear-gradient(135deg, var(--mainTextColor) 0%, #2d5aa8 100%);
+  color: white;
+  padding: 18px 20px;
+  border-radius: 15px 15px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.prayer-icon {
+  font-size: 24px;
+}
+
+.prayer-name {
+  font-size: 22px;
+  font-weight: bold;
+  flex: 1;
+}
+
+.prayer-count {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 6px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+/* Funeral List */
+.funeral-list {
+  background: white;
+  border-radius: 0 0 15px 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Funeral Card */
+.funeral-card {
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.funeral-card:last-child {
+  border-bottom: none;
+}
+
+.funeral-main-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.dead-name {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+}
+
+.sex-badge {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.sex-badge.male {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.sex-badge.female {
+  background: #fce4ec;
+  color: #c2185b;
+}
+
+.sex-badge.child {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+/* Funeral Details */
+.funeral-details {
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.detail-row {
+  margin-bottom: 10px;
+}
+
+.detail-row:last-child {
+  margin-bottom: 0;
+}
+
+.detail-row.two-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.detail-item {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.detail-item.notes {
+  flex-direction: column;
+  gap: 5px;
+}
+
+.detail-label {
+  color: #666;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.detail-label i {
+  color: var(--mainTextColor);
+  width: 18px;
+}
+
+.detail-value {
+  color: #333;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* Footer Message */
+.footer-message {
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--mainTextColor);
+  padding: 30px 20px;
+  margin-top: 20px;
+}
+
+/* Responsive for vertical screens */
+@media screen and (max-width: 600px) {
+  .today-view-container {
+    padding-top: 100px;
+  }
+
+  .sticky-header {
+    padding: 15px;
+  }
+
+  .header-title {
+    font-size: 22px;
+  }
+
+  .hijri-date {
+    font-size: 18px;
+  }
+
+  .gregorian-date {
+    font-size: 16px;
+  }
+
+  .content-container {
+    padding: 15px;
+  }
+
+  .total-number {
+    font-size: 32px;
+  }
+
+  .prayer-header {
+    padding: 15px;
+    flex-wrap: wrap;
+  }
+
+  .prayer-name {
+    font-size: 18px;
+  }
+
+  .funeral-card {
+    padding: 15px;
+  }
+
+  .dead-name {
+    font-size: 18px;
+  }
+
+  .detail-row.two-cols {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .footer-message {
+    font-size: 18px;
+  }
+}
+
+/* Extra tall/vertical screens */
+@media screen and (max-height: 900px) and (min-width: 600px) {
+  .sticky-header {
+    padding: 15px;
+  }
+
+  .header-title {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+
+  .hijri-date {
+    font-size: 18px;
+  }
+
+  .gregorian-date {
+    font-size: 16px;
+  }
+}
