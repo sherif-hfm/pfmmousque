@@ -13,7 +13,7 @@
         </div>
         <div style="font-size:20px; margin-bottom: 6px;">
           <a class="location-link" href="https://maps.app.goo.gl/rR4tG5hT5QTyHLfu9" target="_blank" rel="noopener noreferrer" title="الموقع على خرائط جوجل">
-            <i class="fa-solid fa-location-dot"></i> موقع الجامع على الخريطة
+            <i class="fa-solid fa-location-dot"></i> الموقع  على الخريطة
           </a>
         </div>
         <div style="font-size:35px ;">
@@ -58,14 +58,41 @@
   <div class="dtltTitle">
     <span>تفاصيل الجنائز</span>
   </div>
-  <div style="display:grid;grid-template-columns: 50% 20% 30%;justify-content: space-between;">
+  <div class="dtlGrid">
+    <div class="dtlHeader">اسم المتوفي</div>
+    <div class="dtlHeader">الجنس</div>
+    <div class="dtlHeader">مكان الدفن</div>
+    <div class="dtlHeader">رقم الإسعاف</div>
+    <div class="dtlHeader">رقم القبر</div>
+    <div class="dtlHeader">ملاحظات</div>
     <ng-container *ngFor="let funeral of funeralDetails">
-      <div>{{funeral.deadName}}</div>
-      <div>{{funeral.sex.Name}}</div>
-      <div>{{funeral.purialplace.placeName}}</div>
+      <div class="dtlCell">
+        <span class="dtlMobileLabel">اسم المتوفي:</span>
+        {{funeral.deadName}}
+      </div>
+      <div class="dtlCell">
+        <span class="dtlMobileLabel">الجنس:</span>
+        {{funeral.sex.Name}}
+      </div>
+      <div class="dtlCell">
+        <span class="dtlMobileLabel">مكان الدفن:</span>
+        {{funeral.purialplace.placeName}}
+      </div>
+      <div class="dtlCell">
+        <span class="dtlMobileLabel">رقم الإسعاف:</span>
+        {{funeral.ambulanceNo || '—'}}
+      </div>
+      <div class="dtlCell">
+        <span class="dtlMobileLabel">رقم القبر:</span>
+        {{funeral.graveNo || '—'}}
+      </div>
+      <div class="dtlCell">
+        <span class="dtlMobileLabel">ملاحظات:</span>
+        {{funeral.notes || '—'}}
+      </div>
     </ng-container>
   </div>
-  <div style="width:300px;height:1px;background-color: var(--mainTextColor) ;margin-left: auto;margin-right: auto;margin-top: 10px;margin-bottom: 10px;"></div>
+  <div class="dtlDivider"></div>
     <div style="text-align:center ;font-size: 18px;font-weight: bold;color: var(--mainTextColor)">
       رحمهم الله وأسكنهم فسيح جناته
     </div>

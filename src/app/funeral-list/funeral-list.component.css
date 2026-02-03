@@ -70,10 +70,77 @@ padding: 12px;
     font-size: 18px;
     padding-bottom: 30px;
   }
+
+  .dtlGrid{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+    color: var(--mainTextColor);
+    font-family: 'Cairo', sans-serif;
+    font-size: 16px;
+  }
+  .dtlHeader{
+    font-weight: bold;
+    padding: 8px 4px;
+    border-bottom: 2px solid var(--mainTextColor);
+    text-align: center;
+  }
+  .dtlCell{
+    padding: 8px 4px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    word-break: break-word;
+  }
+  .dtlMobileLabel{
+    display: none;
+    font-weight: bold;
+    margin-left: 5px;
+  }
+  .dtlDivider{
+    width: 300px;
+    height: 1px;
+    background-color: var(--mainTextColor);
+    margin: 15px auto;
+  }
   
+  /* Tablet view */
   @media screen and (max-width: 990px){
     .dtlContainer{
         padding-left: 10px;
         padding-right: 10px;
       }
+    .dtlGrid{
+      grid-template-columns: repeat(6, minmax(60px, 1fr));
+      font-size: 14px;
+      gap: 4px;
+    }
+    .dtlHeader, .dtlCell{
+      padding: 6px 2px;
+    }
+  }
+
+  /* Mobile view */
+  @media screen and (max-width: 600px){
+    .dtlGrid{
+      grid-template-columns: 100%;
+    }
+    .dtlHeader{
+      display: none;
+    }
+    .dtlCell{
+      text-align: right;
+      padding: 6px 10px;
+      border-bottom: none;
+    }
+    .dtlCell:nth-child(6n){
+      border-bottom: 2px solid var(--secondTextColor);
+      padding-bottom: 12px;
+      margin-bottom: 10px;
+    }
+    .dtlMobileLabel{
+      display: inline;
+    }
+    .dtlDivider{
+      width: 100%;
+    }
   }

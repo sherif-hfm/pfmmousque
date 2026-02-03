@@ -39,10 +39,11 @@
 .dataGrid{
     width: 100%;
     display: grid;
-    grid-template-columns: 20% 20% 20% 10% 10% 20%;
+    grid-template-columns: 10% 14% 8% 8% 12% 10% 10% 14% 14%;
     /* row-gap: 1rem; */
     color:var(--mainTextColor);
-    font-size:18px;
+    font-size:16px;
+    overflow-x: auto;
 }
 
 
@@ -111,7 +112,25 @@ background-color:rgb(231, 245, 231,0.7);
     text-align: center;
 }
 
-@media screen and (max-width: 990px){
+/* Tablet view - show grid with smaller columns */
+@media screen and (max-width: 1200px) and (min-width: 769px){
+.dataGrid{
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(9, minmax(80px, 1fr));
+    font-size: 14px;
+}
+.gridCell{
+    padding: 8px 4px;
+    word-break: break-word;
+}
+.editFormContainer{
+    width: 80%;
+}
+}
+
+/* Mobile view - stack cells vertically */
+@media screen and (max-width: 768px){
 .dataGrid{
     display: grid;
     width: 100%;
@@ -122,7 +141,7 @@ background-color:rgb(231, 245, 231,0.7);
 }
 .gridCell{
     border-width: 0px;
-    padding: 0px;
+    padding: 5px 0px;
  }
  .oddGridCell{
     background-color:transparent
@@ -130,6 +149,7 @@ background-color:rgb(231, 245, 231,0.7);
 .mobileTitle{
     display:inline;
     font-weight: bold;
+    margin-left: 5px;
 }
 .details{
     width: 100%;
@@ -137,16 +157,22 @@ background-color:rgb(231, 245, 231,0.7);
 .rowButtons{
    text-align: center;
    border-bottom-style:solid ;
-   border-bottom-width: 1px;
-   padding-bottom: 10px;
+   border-bottom-width: 2px;
+   border-color: var(--secondTextColor);
+   padding-bottom: 15px;
+   padding-top: 10px;
+   margin-bottom: 15px;
 } 
 .editFormContainer{
     width: 100%;
-   
+    padding: 15px;
 }
 .editForm{
     padding-top: 20px;
     width: 100%;
     margin: auto;
+}
+.input{
+    width: 100%;
 }
 }

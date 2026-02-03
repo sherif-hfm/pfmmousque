@@ -21,6 +21,9 @@
                 <div class="gridCell header">جنس المتوفي</div>
                 <div class="gridCell header">الصلاة</div>
                 <div class="gridCell header">مكان الدفن</div>
+                <div class="gridCell header">رقم الإسعاف</div>
+                <div class="gridCell header">رقم القبر</div>
+                <div class="gridCell header">ملاحظات</div>
                 <div class="gridCell header">الاجراءات</div>
                 <ng-container  *ngFor="let funeral of funeralList; let i = index">
                     <div class="gridCell" [ngClass]="{'oddGridCell':(i % 2) > 0}">
@@ -42,6 +45,18 @@
                     <div class="gridCell" [ngClass]="{'oddGridCell':(i % 2) > 0}">
                         <label class="mobileTitle">مكان الدفن :</label>
                         {{funeral.purialplace.placeName}}
+                    </div>
+                    <div class="gridCell" [ngClass]="{'oddGridCell':(i % 2) > 0}">
+                        <label class="mobileTitle">رقم الإسعاف :</label>
+                        {{funeral.ambulanceNo || '—'}}
+                    </div>
+                    <div class="gridCell" [ngClass]="{'oddGridCell':(i % 2) > 0}">
+                        <label class="mobileTitle">رقم القبر :</label>
+                        {{funeral.graveNo || '—'}}
+                    </div>
+                    <div class="gridCell" [ngClass]="{'oddGridCell':(i % 2) > 0}">
+                        <label class="mobileTitle">ملاحظات :</label>
+                        {{funeral.notes || '—'}}
                     </div>
                     <div class="gridCell rowButtons" [ngClass]="{'oddGridCell':(i % 2) > 0}">
                         <button (click)="edit(funeral.id)" class="btn btn-success">تعديل</button>
@@ -78,6 +93,18 @@
                     <select class="input" formControlName="placeId">
                         <option *ngFor="let place of Places" value="{{place.id}}">{{place.placeName}}</option>
                     </select>
+                </div>
+                <div class="inputContainer">
+                    <label class="inputLable">رقم الإسعاف</label>
+                    <input class="input" type="text" formControlName="ambulanceNo" placeholder="اختياري">
+                </div>
+                <div class="inputContainer">
+                    <label class="inputLable">رقم القبر</label>
+                    <input class="input" type="text" formControlName="graveNo" placeholder="اختياري">
+                </div>
+                <div class="inputContainer">
+                    <label class="inputLable">ملاحظات</label>
+                    <textarea class="input" formControlName="notes" placeholder="اختياري" rows="3"></textarea>
                 </div>
                 <div class="formButtons">
                     <button class="btn btn-success" [disabled]="funeralFrom.status == 'INVALID'" (click)="save()">حفظ</button>

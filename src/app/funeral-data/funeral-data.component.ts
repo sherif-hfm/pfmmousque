@@ -25,6 +25,9 @@ export class FuneralDataComponent implements OnInit {
     prayerId:new FormControl('',Validators.required),
     sex:new FormControl('',Validators.required),
     placeId:new FormControl('',Validators.required),
+    ambulanceNo:new FormControl(''),
+    graveNo:new FormControl(''),
+    notes:new FormControl(''),
   });
   searchDate:string='';
 
@@ -112,6 +115,9 @@ search(){
     this.funeralFrom.get('id')?.setValue(0);
     this.funeralFrom.get('date')?.setValue(this.getCurrentDate());
     this.funeralFrom.get('deadName')?.setValue('');
+    this.funeralFrom.get('ambulanceNo')?.setValue('');
+    this.funeralFrom.get('graveNo')?.setValue('');
+    this.funeralFrom.get('notes')?.setValue('');
     }
 
   edit(id:any){
@@ -124,6 +130,9 @@ search(){
        this.funeralFrom.get('deadName')?.setValue(data.deadName);
        this.funeralFrom.get('prayerId')?.setValue(data.prayerId);
        this.funeralFrom.get('placeId')?.setValue(data.purialplaceId);
+       this.funeralFrom.get('ambulanceNo')?.setValue(data.ambulanceNo ?? '');
+       this.funeralFrom.get('graveNo')?.setValue(data.graveNo ?? '');
+       this.funeralFrom.get('notes')?.setValue(data.notes ?? '');
        this.mode='edit';
       },
       error:(err:any)=>{
@@ -153,6 +162,9 @@ search(){
       sex:this.funeralFrom.get('sex')?.value,
       prayerId:this.funeralFrom.get('prayerId')?.value,
       placeId:this.funeralFrom.get('placeId')?.value,
+      ambulanceNo:this.funeralFrom.get('ambulanceNo')?.value || undefined,
+      graveNo:this.funeralFrom.get('graveNo')?.value || undefined,
+      notes:this.funeralFrom.get('notes')?.value || undefined,
     };
     this.funeralService.addFuneral(funeral).subscribe({
       next:(data:any)=>{
@@ -176,6 +188,9 @@ search(){
       sex:this.funeralFrom.get('sex')?.value,
       prayerId:this.funeralFrom.get('prayerId')?.value,
       placeId:this.funeralFrom.get('placeId')?.value,
+      ambulanceNo:this.funeralFrom.get('ambulanceNo')?.value || undefined,
+      graveNo:this.funeralFrom.get('graveNo')?.value || undefined,
+      notes:this.funeralFrom.get('notes')?.value || undefined,
     };
     console.log(funeral);
     this.funeralService.updateFuneral(funeral).subscribe({
