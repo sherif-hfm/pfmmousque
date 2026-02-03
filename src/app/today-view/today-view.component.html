@@ -53,58 +53,35 @@
         <div class="prayer-count">{{arabicNums.toArabicNum(group.funerals.length.toString())}} جنازة</div>
       </div>
 
-      <!-- Funeral Cards -->
-      <div class="funeral-list">
-        <div class="funeral-card" *ngFor="let funeral of group.funerals">
-          <div class="funeral-main-info">
-            <div class="dead-name">{{funeral.deadName}}</div>
-            <div class="sex-badge" [ngClass]="{
+      <!-- Funeral Grid Table -->
+      <div class="funeral-grid">
+        <!-- Table Header -->
+        <div class="grid-header">
+          <div class="grid-cell header-cell">اسم المتوفي</div>
+          <div class="grid-cell header-cell">الجنس</div>
+          <div class="grid-cell header-cell">مكان الدفن</div>
+          <div class="grid-cell header-cell">رقم الإسعاف</div>
+          <div class="grid-cell header-cell">رقم القبر</div>
+          <div class="grid-cell header-cell">ملاحظات</div>
+        </div>
+        <!-- Table Rows -->
+        <div class="grid-row" *ngFor="let funeral of group.funerals" [ngClass]="{
+          'row-male': funeral.sexId === 'M',
+          'row-female': funeral.sexId === 'F',
+          'row-child': funeral.sexId === 'B' || funeral.sexId === 'G'
+        }">
+          <div class="grid-cell name-cell">{{funeral.deadName}}</div>
+          <div class="grid-cell">
+            <span class="sex-badge" [ngClass]="{
               'male': funeral.sexId === 'M',
               'female': funeral.sexId === 'F',
               'child': funeral.sexId === 'B' || funeral.sexId === 'G'
-            }">
-              {{funeral.sexName}}
-            </div>
+            }">{{funeral.sexName}}</span>
           </div>
-          
-          <div class="funeral-details">
-            <div class="detail-row">
-              <div class="detail-item">
-                <span class="detail-label">
-                  <i class="fa-solid fa-location-dot"></i>
-                  مكان الدفن:
-                </span>
-                <span class="detail-value">{{funeral.placeName || '—'}}</span>
-              </div>
-            </div>
-            
-            <div class="detail-row two-cols">
-              <div class="detail-item">
-                <span class="detail-label">
-                  <i class="fa-solid fa-hashtag"></i>
-                  رقم الإسعاف:
-                </span>
-                <span class="detail-value">{{funeral.ambulanceNo || '—'}}</span>
-              </div>
-              <div class="detail-item">
-                <span class="detail-label">
-                  <i class="fa-solid fa-landmark"></i>
-                  رقم القبر:
-                </span>
-                <span class="detail-value">{{funeral.graveNo || '—'}}</span>
-              </div>
-            </div>
-
-            <div class="detail-row" *ngIf="funeral.notes">
-              <div class="detail-item notes">
-                <span class="detail-label">
-                  <i class="fa-solid fa-note-sticky"></i>
-                  ملاحظات:
-                </span>
-                <span class="detail-value">{{funeral.notes}}</span>
-              </div>
-            </div>
-          </div>
+          <div class="grid-cell">{{funeral.placeName || '—'}}</div>
+          <div class="grid-cell">{{funeral.ambulanceNo || '—'}}</div>
+          <div class="grid-cell">{{funeral.graveNo || '—'}}</div>
+          <div class="grid-cell notes-cell">{{funeral.notes || '—'}}</div>
         </div>
       </div>
     </div>

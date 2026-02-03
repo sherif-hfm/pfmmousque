@@ -179,7 +179,7 @@
 .prayer-header {
   background: linear-gradient(135deg, var(--mainTextColor) 0%, #2d5aa8 100%);
   color: white;
-  padding: 18px 20px;
+  padding: 15px 20px;
   border-radius: 15px 15px 0 0;
   display: flex;
   align-items: center;
@@ -203,42 +203,84 @@
   font-size: 14px;
 }
 
-/* Funeral List */
-.funeral-list {
+/* Funeral Grid Table */
+.funeral-grid {
   background: white;
   border-radius: 0 0 15px 15px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
-/* Funeral Card */
-.funeral-card {
-  padding: 20px;
-  border-bottom: 1px solid #eee;
+.grid-header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr 1fr 1fr 1.5fr;
+  background: #f0f4f8;
+  border-bottom: 2px solid var(--mainTextColor);
 }
 
-.funeral-card:last-child {
+.grid-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr 1fr 1fr 1.5fr;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s;
+}
+
+.grid-row:last-child {
   border-bottom: none;
 }
 
-.funeral-main-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
+.grid-row:nth-child(even) {
+  background: #fafbfc;
 }
 
-.dead-name {
-  font-size: 22px;
+.grid-row.row-male {
+  border-right: 4px solid #1565c0;
+}
+
+.grid-row.row-female {
+  border-right: 4px solid #c2185b;
+}
+
+.grid-row.row-child {
+  border-right: 4px solid #2e7d32;
+}
+
+.grid-cell {
+  padding: 12px 15px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  border-left: 1px solid #eee;
+}
+
+.grid-cell:last-child {
+  border-left: none;
+}
+
+.header-cell {
   font-weight: bold;
+  color: var(--mainTextColor);
+  font-size: 15px;
+  background: #e8eef5;
+}
+
+.name-cell {
+  font-weight: 600;
   color: #333;
+  font-size: 18px;
+}
+
+.notes-cell {
+  font-size: 14px;
+  color: #666;
 }
 
 .sex-badge {
-  padding: 6px 16px;
-  border-radius: 20px;
-  font-size: 14px;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 13px;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .sex-badge.male {
@@ -256,57 +298,6 @@
   color: #2e7d32;
 }
 
-/* Funeral Details */
-.funeral-details {
-  background: #f8f9fa;
-  border-radius: 10px;
-  padding: 15px;
-}
-
-.detail-row {
-  margin-bottom: 10px;
-}
-
-.detail-row:last-child {
-  margin-bottom: 0;
-}
-
-.detail-row.two-cols {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
-}
-
-.detail-item {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.detail-item.notes {
-  flex-direction: column;
-  gap: 5px;
-}
-
-.detail-label {
-  color: #666;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.detail-label i {
-  color: var(--mainTextColor);
-  width: 18px;
-}
-
-.detail-value {
-  color: #333;
-  font-size: 15px;
-  font-weight: 500;
-}
-
 /* Footer Message */
 .footer-message {
   text-align: center;
@@ -317,8 +308,8 @@
   margin-top: 20px;
 }
 
-/* Responsive for vertical screens */
-@media screen and (max-width: 600px) {
+/* Responsive - keep grid layout for all sizes (vertical display screen) */
+@media screen and (max-width: 900px) {
   .today-view-container {
     padding-top: 100px;
   }
@@ -340,7 +331,7 @@
   }
 
   .content-container {
-    padding: 15px;
+    padding: 10px;
   }
 
   .total-number {
@@ -348,25 +339,34 @@
   }
 
   .prayer-header {
-    padding: 15px;
-    flex-wrap: wrap;
+    padding: 12px 15px;
   }
 
   .prayer-name {
     font-size: 18px;
   }
 
-  .funeral-card {
-    padding: 15px;
+  .grid-header,
+  .grid-row {
+    grid-template-columns: 2fr 0.8fr 1.2fr 0.8fr 0.8fr 1.2fr;
   }
 
-  .dead-name {
-    font-size: 18px;
+  .grid-cell {
+    padding: 10px 8px;
+    font-size: 14px;
   }
 
-  .detail-row.two-cols {
-    grid-template-columns: 1fr;
-    gap: 10px;
+  .header-cell {
+    font-size: 13px;
+  }
+
+  .name-cell {
+    font-size: 15px;
+  }
+
+  .sex-badge {
+    padding: 3px 8px;
+    font-size: 12px;
   }
 
   .footer-message {
@@ -374,22 +374,114 @@
   }
 }
 
-/* Extra tall/vertical screens */
-@media screen and (max-height: 900px) and (min-width: 600px) {
+/* Small vertical screens - compact grid */
+@media screen and (max-width: 600px) {
+  .today-view-container {
+    padding-top: 90px;
+  }
+
   .sticky-header {
-    padding: 15px;
+    padding: 12px;
   }
 
   .header-title {
-    font-size: 24px;
-    margin-bottom: 8px;
+    font-size: 18px;
+    margin-bottom: 5px;
   }
 
   .hijri-date {
-    font-size: 18px;
+    font-size: 14px;
   }
 
   .gregorian-date {
+    font-size: 12px;
+  }
+
+  .content-container {
+    padding: 8px;
+  }
+
+  .total-summary {
+    padding: 12px;
+  }
+
+  .total-number {
+    font-size: 28px;
+  }
+
+  .total-label,
+  .total-unit {
+    font-size: 14px;
+  }
+
+  .prayer-header {
+    padding: 10px 12px;
+  }
+
+  .prayer-icon {
+    font-size: 18px;
+  }
+
+  .prayer-name {
     font-size: 16px;
+  }
+
+  .prayer-count {
+    font-size: 12px;
+    padding: 4px 10px;
+  }
+
+  /* Keep grid layout but make it more compact */
+  .grid-header,
+  .grid-row {
+    grid-template-columns: 1.5fr 0.7fr 1fr 0.7fr 0.7fr 1fr;
+  }
+
+  .grid-cell {
+    padding: 8px 5px;
+    font-size: 12px;
+  }
+
+  .header-cell {
+    font-size: 11px;
+    padding: 8px 5px;
+  }
+
+  .name-cell {
+    font-size: 13px;
+  }
+
+  .notes-cell {
+    font-size: 11px;
+  }
+
+  .sex-badge {
+    padding: 2px 6px;
+    font-size: 10px;
+  }
+
+  .footer-message {
+    font-size: 16px;
+    padding: 20px 10px;
+  }
+}
+
+/* Extra tall/vertical screens */
+@media screen and (max-height: 900px) and (min-width: 600px) {
+  .sticky-header {
+    padding: 12px;
+  }
+
+  .header-title {
+    font-size: 22px;
+    margin-bottom: 6px;
+  }
+
+  .hijri-date {
+    font-size: 16px;
+  }
+
+  .gregorian-date {
+    font-size: 14px;
   }
 }
