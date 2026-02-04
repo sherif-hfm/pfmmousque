@@ -17,8 +17,8 @@
             </div>
             <div class="dataGrid">
                 <div class="gridCell header">تاريخ الجنازة</div>
-                <div class="gridCell header">اسم المتوفي</div>
-                <div class="gridCell header">جنس المتوفي</div>
+                <div class="gridCell header">اسم المتوفى</div>
+                <div class="gridCell header">جنس المتوفى</div>
                 <div class="gridCell header">الصلاة</div>
                 <div class="gridCell header">مكان الدفن</div>
                 <div class="gridCell header">رقم الإسعاف</div>
@@ -31,11 +31,11 @@
                         {{funeral.date}}
                     </div>
                     <div class="gridCell" [ngClass]="{'oddGridCell':(i % 2) > 0}">
-                        <label class="mobileTitle">اسم المتوفي :</label>
+                        <label class="mobileTitle">اسم المتوفى :</label>
                         {{funeral.deadName}}
                     </div>
                     <div class="gridCell" [ngClass]="{'oddGridCell':(i % 2) > 0}">
-                        <label class="mobileTitle">جنس المتوفي :</label>
+                        <label class="mobileTitle">جنس المتوفى :</label>
                         {{funeral.sex.Name}}
                     </div>
                     <div class="gridCell" [ngClass]="{'oddGridCell':(i % 2) > 0}">
@@ -73,11 +73,11 @@
                     <input  class="input" type="text" formControlName="date">
                 </div>
                 <div class="inputContainer">
-                    <label class="inputLable">اسم المتوفي</label>
+                    <label class="inputLable">اسم المتوفى</label>
                     <input class="input" type="text" formControlName="deadName">
                 </div>
                 <div class="inputContainer">
-                    <label class="inputLable">جنس المتوفي</label>
+                    <label class="inputLable">جنس المتوفى</label>
                     <select class="input" formControlName="sex">
                         <option *ngFor="let sex of sexs" value="{{sex.id}}">{{sex.Name}}</option>
                     </select>

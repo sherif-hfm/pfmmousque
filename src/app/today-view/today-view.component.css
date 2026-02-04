@@ -1,35 +1,30 @@
 .today-view-container {
   direction: rtl;
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
-  padding-bottom: 40px;
-  padding-top: 120px; /* Space for fixed header */
+  background: linear-gradient(135deg,#f5f7fa 0%,#e4e8ec 100%);
+  padding: 120px 0 40px;
 }
 
-/* Sticky Header */
 .sticky-header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 100;
-  background: linear-gradient(135deg, var(--mainTextColor) 0%, #1a4a9e 100%);
-  color: white;
+  background: linear-gradient(135deg,var(--mainTextColor) 0%,#1a4a9e 100%);
+  color: #fff;
   padding: 20px;
   text-align: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 15px rgba(0,0,0,.2);
   transform: translateZ(0);
-  -webkit-transform: translateZ(0);
   will-change: transform;
   backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
 }
 
 .header-title {
   font-size: 28px;
   font-weight: bold;
   margin-bottom: 12px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .header-dates {
@@ -45,46 +40,37 @@
 
 .gregorian-date {
   font-size: 18px;
-  opacity: 0.9;
+  opacity: .9;
 }
 
-/* Loading State */
-.loading-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 60px 20px;
-}
-
-.loading-spinner {
-  width: 50px;
-  height: 50px;
-  border: 4px solid #e0e0e0;
-  border-top: 4px solid var(--mainTextColor);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.loading-text {
-  margin-top: 20px;
-  font-size: 18px;
-  color: #666;
-}
-
-/* Error State */
-.error-container {
+.loading-container,
+.error-container,
+.no-data-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 60px 20px;
   text-align: center;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #e0e0e0;
+  border-top-color: var(--mainTextColor);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-text {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #666;
 }
 
 .error-icon {
@@ -101,28 +87,16 @@
 
 .retry-btn {
   background: var(--mainTextColor);
-  color: white;
+  color: #fff;
   border: none;
   padding: 12px 30px;
   border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
-  transition: all 0.3s ease;
 }
 
 .retry-btn:hover {
   background: var(--secondTextColor);
-  transform: translateY(-2px);
-}
-
-/* No Data State */
-.no-data-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 60px 20px;
-  text-align: center;
 }
 
 .no-data-icon {
@@ -136,24 +110,23 @@
   color: #888;
 }
 
-/* Content Container */
 .content-container {
   padding: 20px;
   max-width: 800px;
   margin: 0 auto;
 }
 
-/* Total Summary */
 .total-summary {
-  background: white;
+  background: #fff;
   border-radius: 15px;
   padding: 20px;
   text-align: center;
   margin-bottom: 25px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 15px rgba(0,0,0,.08);
 }
 
-.total-label {
+.total-label,
+.total-unit {
   font-size: 18px;
   color: #666;
 }
@@ -166,19 +139,13 @@
   margin: 5px 0;
 }
 
-.total-unit {
-  font-size: 18px;
-  color: #666;
-}
-
-/* Prayer Group */
 .prayer-group {
   margin-bottom: 30px;
 }
 
 .prayer-header {
-  background: linear-gradient(135deg, var(--mainTextColor) 0%, #2d5aa8 100%);
-  color: white;
+  background: linear-gradient(135deg,var(--mainTextColor) 0%,#2d5aa8 100%);
+  color: #fff;
   padding: 15px 20px;
   border-radius: 15px 15px 0 0;
   display: flex;
@@ -197,32 +164,32 @@
 }
 
 .prayer-count {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255,255,255,.2);
   padding: 6px 15px;
   border-radius: 20px;
   font-size: 14px;
 }
 
-/* Funeral Grid Table */
 .funeral-grid {
-  background: white;
+  background: #fff;
   border-radius: 0 0 15px 15px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 15px rgba(0,0,0,.08);
+}
+
+.grid-header,
+.grid-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr 1fr 1fr 1.5fr;
 }
 
 .grid-header {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1.5fr 1fr 1fr 1.5fr;
   background: #f0f4f8;
   border-bottom: 2px solid var(--mainTextColor);
 }
 
 .grid-row {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1.5fr 1fr 1fr 1.5fr;
   border-bottom: 1px solid #eee;
-  transition: background-color 0.2s;
 }
 
 .grid-row:last-child {
@@ -233,17 +200,9 @@
   background: #fafbfc;
 }
 
-.grid-row.row-male {
-  border-right: 4px solid #1565c0;
-}
-
-.grid-row.row-female {
-  border-right: 4px solid #c2185b;
-}
-
-.grid-row.row-child {
-  border-right: 4px solid #2e7d32;
-}
+.grid-row.row-male { border-right: 4px solid #1565c0; }
+.grid-row.row-female { border-right: 4px solid #c2185b; }
+.grid-row.row-child { border-right: 4px solid #2e7d32; }
 
 .grid-cell {
   padding: 12px 15px;
@@ -283,22 +242,10 @@
   white-space: nowrap;
 }
 
-.sex-badge.male {
-  background: #e3f2fd;
-  color: #1565c0;
-}
+.sex-badge.male { background: #e3f2fd; color: #1565c0; }
+.sex-badge.female { background: #fce4ec; color: #c2185b; }
+.sex-badge.child { background: #e8f5e9; color: #2e7d32; }
 
-.sex-badge.female {
-  background: #fce4ec;
-  color: #c2185b;
-}
-
-.sex-badge.child {
-  background: #e8f5e9;
-  color: #2e7d32;
-}
-
-/* Footer Message */
 .footer-message {
   text-align: center;
   font-size: 22px;
@@ -308,180 +255,50 @@
   margin-top: 20px;
 }
 
-/* Responsive - keep grid layout for all sizes (vertical display screen) */
-@media screen and (max-width: 900px) {
-  .today-view-container {
-    padding-top: 100px;
-  }
-
-  .sticky-header {
-    padding: 15px;
-  }
-
-  .header-title {
-    font-size: 22px;
-  }
-
-  .hijri-date {
-    font-size: 18px;
-  }
-
-  .gregorian-date {
-    font-size: 16px;
-  }
-
-  .content-container {
-    padding: 10px;
-  }
-
-  .total-number {
-    font-size: 32px;
-  }
-
-  .prayer-header {
-    padding: 12px 15px;
-  }
-
-  .prayer-name {
-    font-size: 18px;
-  }
-
-  .grid-header,
-  .grid-row {
-    grid-template-columns: 2fr 0.8fr 1.2fr 0.8fr 0.8fr 1.2fr;
-  }
-
-  .grid-cell {
-    padding: 10px 8px;
-    font-size: 14px;
-  }
-
-  .header-cell {
-    font-size: 13px;
-  }
-
-  .name-cell {
-    font-size: 15px;
-  }
-
-  .sex-badge {
-    padding: 3px 8px;
-    font-size: 12px;
-  }
-
-  .footer-message {
-    font-size: 18px;
-  }
+@media (max-width:900px) {
+  .today-view-container { padding-top: 100px; }
+  .sticky-header { padding: 15px; }
+  .header-title { font-size: 22px; }
+  .hijri-date { font-size: 18px; }
+  .gregorian-date { font-size: 16px; }
+  .content-container { padding: 10px; }
+  .total-number { font-size: 32px; }
+  .prayer-header { padding: 12px 15px; }
+  .prayer-name { font-size: 18px; }
+  .grid-header,.grid-row { grid-template-columns: 2fr .8fr 1.2fr .8fr .8fr 1.2fr; }
+  .grid-cell { padding: 10px 8px; font-size: 14px; }
+  .header-cell { font-size: 13px; }
+  .name-cell { font-size: 15px; }
+  .sex-badge { padding: 3px 8px; font-size: 12px; }
+  .footer-message { font-size: 18px; }
 }
 
-/* Small vertical screens - compact grid */
-@media screen and (max-width: 600px) {
-  .today-view-container {
-    padding-top: 90px;
-  }
-
-  .sticky-header {
-    padding: 12px;
-  }
-
-  .header-title {
-    font-size: 18px;
-    margin-bottom: 5px;
-  }
-
-  .hijri-date {
-    font-size: 14px;
-  }
-
-  .gregorian-date {
-    font-size: 12px;
-  }
-
-  .content-container {
-    padding: 8px;
-  }
-
-  .total-summary {
-    padding: 12px;
-  }
-
-  .total-number {
-    font-size: 28px;
-  }
-
-  .total-label,
-  .total-unit {
-    font-size: 14px;
-  }
-
-  .prayer-header {
-    padding: 10px 12px;
-  }
-
-  .prayer-icon {
-    font-size: 18px;
-  }
-
-  .prayer-name {
-    font-size: 16px;
-  }
-
-  .prayer-count {
-    font-size: 12px;
-    padding: 4px 10px;
-  }
-
-  /* Keep grid layout but make it more compact */
-  .grid-header,
-  .grid-row {
-    grid-template-columns: 1.5fr 0.7fr 1fr 0.7fr 0.7fr 1fr;
-  }
-
-  .grid-cell {
-    padding: 8px 5px;
-    font-size: 12px;
-  }
-
-  .header-cell {
-    font-size: 11px;
-    padding: 8px 5px;
-  }
-
-  .name-cell {
-    font-size: 13px;
-  }
-
-  .notes-cell {
-    font-size: 11px;
-  }
-
-  .sex-badge {
-    padding: 2px 6px;
-    font-size: 10px;
-  }
-
-  .footer-message {
-    font-size: 16px;
-    padding: 20px 10px;
-  }
+@media (max-width:600px) {
+  .today-view-container { padding-top: 90px; }
+  .sticky-header { padding: 12px; }
+  .header-title { font-size: 18px; margin-bottom: 5px; }
+  .hijri-date { font-size: 14px; }
+  .gregorian-date { font-size: 12px; }
+  .content-container { padding: 8px; }
+  .total-summary { padding: 12px; }
+  .total-number { font-size: 28px; }
+  .total-label,.total-unit { font-size: 14px; }
+  .prayer-header { padding: 10px 12px; }
+  .prayer-icon { font-size: 18px; }
+  .prayer-name { font-size: 16px; }
+  .prayer-count { font-size: 12px; padding: 4px 10px; }
+  .grid-header,.grid-row { grid-template-columns: 1.5fr .7fr 1fr .7fr .7fr 1fr; }
+  .grid-cell { padding: 8px 5px; font-size: 12px; }
+  .header-cell { font-size: 11px; padding: 8px 5px; }
+  .name-cell { font-size: 13px; }
+  .notes-cell { font-size: 11px; }
+  .sex-badge { padding: 2px 6px; font-size: 10px; }
+  .footer-message { font-size: 16px; padding: 20px 10px; }
 }
 
-/* Extra tall/vertical screens */
-@media screen and (max-height: 900px) and (min-width: 600px) {
-  .sticky-header {
-    padding: 12px;
-  }
-
-  .header-title {
-    font-size: 22px;
-    margin-bottom: 6px;
-  }
-
-  .hijri-date {
-    font-size: 16px;
-  }
-
-  .gregorian-date {
-    font-size: 14px;
-  }
+@media (max-height:900px) and (min-width:600px) {
+  .sticky-header { padding: 12px; }
+  .header-title { font-size: 22px; margin-bottom: 6px; }
+  .hijri-date { font-size: 16px; }
+  .gregorian-date { font-size: 14px; }
 }

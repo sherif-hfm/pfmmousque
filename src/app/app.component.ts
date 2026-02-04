@@ -21,6 +21,6 @@ export class AppComponent {
 
   private updateLayout(url: string): void {
     this.minheight = url.includes('/login') ? 0 : window.screen.availHeight;
-    this.showHeaderFooter = !url.includes('/today-view');
+    this.showHeaderFooter = !url.includes('/todayview');
   }
 }

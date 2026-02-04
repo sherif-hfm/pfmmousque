@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'admin', component: FuneralDataComponent,canActivate: [AuthService] },
   { path: 'monthlyReport', component: MonthlyReportComponent,canActivate: [AuthService] },
-  { path: 'today-view', component: TodayViewComponent },
+  { path: 'todayview', component: TodayViewComponent },
    { path: '**', component: PageNotFoundComponent }  // Wildcard route for a 404 page
 
 ];

@@ -40,6 +40,8 @@ export class TodayViewComponent implements OnInit, OnDestroy {
   private scrollIntervalTime: number = 50; // milliseconds
   private pauseAtBottom: number = 3000; // pause 3 seconds at bottom before refresh
   private isScrolling: boolean = false;
+  private timeouts: any[] = []; // Track all timeouts for cleanup
+  private isDestroyed: boolean = false;
 
   // Prayer order for sorting (Fajr to Isha)
   prayerOrder: { [key: number]: number } = {
@@ -69,7 +71,11 @@ export class TodayViewComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.isDestroyed = true;
     this.stopAutoScroll();
+    // Clear all pending timeouts
+    this.timeouts.forEach(t => clearTimeout(t));
+    this.timeouts = [];
   }
 
   loadTodayDetails(): void {
@@ -85,9 +91,9 @@ export class TodayViewComponent implements OnInit, OnDestroy {
         this.isLoading = false;
         
         // Start auto-scroll after data loads and DOM updates
-        setTimeout(() => {
-          this.startAutoScroll();
-        }, 1000);
+        this.timeouts.push(setTimeout(() => {
+          if (!this.isDestroyed) this.startAutoScroll();
+        }, 1000));
       },
       error: (err: any) => {
         console.log('http error', err);
@@ -95,9 +101,9 @@ export class TodayViewComponent implements OnInit, OnDestroy {
         this.isLoading = false;
         
         // Retry after 10 seconds on error
-        setTimeout(() => {
-          this.loadTodayDetails();
-        }, 10000);
+        this.timeouts.push(setTimeout(() => {
+          if (!this.isDestroyed) this.loadTodayDetails();
+        }, 10000));
       }
     });
   }
@@ -111,10 +117,12 @@ export class TodayViewComponent implements OnInit, OnDestroy {
     
     if (scrollHeight <= clientHeight) {
       // No need to scroll, just refresh after a delay
-      setTimeout(() => {
-        window.scrollTo({ top: 0 });
-        this.loadTodayDetails();
-      }, 30000); // Refresh every 30 seconds if no scroll needed
+      this.timeouts.push(setTimeout(() => {
+        if (!this.isDestroyed) {
+          window.scrollTo({ top: 0 });
+          this.loadTodayDetails();
+        }
+      }, 30000)); // Refresh every 30 seconds if no scroll needed
       return;
     }
 
@@ -122,18 +130,24 @@ export class TodayViewComponent implements OnInit, OnDestroy {
     window.scrollTo({ top: 0 }); // Start from top
     
     this.scrollInterval = setInterval(() => {
+      if (this.isDestroyed) {
+        this.stopAutoScroll();
+        return;
+      }
       const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
       const maxScroll = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       
       if (currentScroll >= maxScroll - 5) {
         // Reached bottom, pause then refresh
         this.stopAutoScroll();
-        setTimeout(() => {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-          setTimeout(() => {
-            this.loadTodayDetails();
-          }, 1000);
-        }, this.pauseAtBottom);
+        this.timeouts.push(setTimeout(() => {
+          if (!this.isDestroyed) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            this.timeouts.push(setTimeout(() => {
+              if (!this.isDestroyed) this.loadTodayDetails();
+            }, 1000));
+          }
+        }, this.pauseAtBottom));
       } else {
         // Continue scrolling
         window.scrollBy(0, this.scrollSpeed);
@@ -220,9 +234,9 @@ export class TodayViewComponent implements OnInit, OnDestroy {
     if (this.isScrolling) {
       this.stopAutoScroll();
       // Resume auto-scroll after 10 seconds of no interaction
-      setTimeout(() => {
-        this.startAutoScroll();
-      }, 10000);
+      this.timeouts.push(setTimeout(() => {
+        if (!this.isDestroyed) this.startAutoScroll();
+      }, 10000));
     }
   }
 }
