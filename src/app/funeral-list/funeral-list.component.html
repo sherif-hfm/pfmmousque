@@ -25,20 +25,20 @@
           عدد الجنائز <span class="card-prayer-num">{{ toArabicNum(prayer.Total) }}</span>
         </p>
         <div class="info-container">
-          <div class="info" *ngIf="prayer.M > 0">
+          <div class="info" *ngIf="prayer.men > 0">
             <span class="info-label">رجال</span>
-            <span class="info-number">{{ toArabicNum(prayer.M) }}</span>
+            <span class="info-number">{{ toArabicNum(prayer.men) }}</span>
           </div>
-          <div class="info" *ngIf="prayer.F > 0">
+          <div class="info" *ngIf="prayer.women > 0">
             <span class="info-label">نساء</span>
-            <span class="info-number">{{ toArabicNum(prayer.F) }}</span>
+            <span class="info-number">{{ toArabicNum(prayer.women) }}</span>
           </div>
-          <div class="info" *ngIf="(prayer.B + prayer.G) > 0">
+          <div class="info" *ngIf="prayer.children > 0">
             <span class="info-label">اطفال</span>
-            <span class="info-number">{{ toArabicNum(prayer.B + prayer.G) }}</span>
+            <span class="info-number">{{ toArabicNum(prayer.children) }}</span>
           </div>
         </div>
-        <div class="card-prayer-actions">
+        <div class="card-prayer-actions" *ngIf="prayer.prayerId">
           <button type="button" class="btn btn-details" (click)="openDetailsPopup(prayer.prayerId)">
             عرض التفاصيل
           </button>
@@ -48,7 +48,7 @@
   </div>
 </div>
 
-<modal [(show)]="showdetails">
+<modal [(show)]="showdetails" class="details-modal">
   <div class="dtlContainer" *ngIf="showdetails">
     <h2 class="dtlTitle">تفاصيل الجنائز</h2>
     <div class="dtlGrid" role="table" aria-label="قائمة الجنائز">

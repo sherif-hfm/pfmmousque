@@ -200,9 +200,10 @@
   background: #fafbfc;
 }
 
-.grid-row.row-male { border-right: 4px solid #1565c0; }
+/* Right border and sex badge use distinct colors: man = blue, woman = pink, child = green */
+.grid-row.row-male   { border-right: 4px solid #1565c0; }
 .grid-row.row-female { border-right: 4px solid #c2185b; }
-.grid-row.row-child { border-right: 4px solid #2e7d32; }
+.grid-row.row-child  { border-right: 4px solid #2e7d32; }
 
 .grid-cell {
   padding: 12px 15px;

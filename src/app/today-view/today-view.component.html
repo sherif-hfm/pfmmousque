@@ -67,15 +67,15 @@
         <!-- Table Rows -->
         <div class="grid-row" *ngFor="let funeral of group.funerals" [ngClass]="{
           'row-male': funeral.sexId === 'M',
-          'row-female': funeral.sexId === 'F',
-          'row-child': funeral.sexId === 'B' || funeral.sexId === 'G'
+          'row-female': funeral.sexId === 'W' || funeral.sexId === 'F',
+          'row-child': funeral.sexId !== 'M' && funeral.sexId !== 'W' && funeral.sexId !== 'F'
         }">
           <div class="grid-cell name-cell">{{funeral.deadName}}</div>
           <div class="grid-cell">
             <span class="sex-badge" [ngClass]="{
               'male': funeral.sexId === 'M',
-              'female': funeral.sexId === 'F',
-              'child': funeral.sexId === 'B' || funeral.sexId === 'G'
+              'female': funeral.sexId === 'W' || funeral.sexId === 'F',
+              'child': funeral.sexId !== 'M' && funeral.sexId !== 'W' && funeral.sexId !== 'F'
             }">{{funeral.sexName}}</span>
           </div>
           <div class="grid-cell">{{funeral.placeName || '—'}}</div>

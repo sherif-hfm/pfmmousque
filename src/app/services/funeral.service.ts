@@ -14,7 +14,7 @@ export class FuneralService {
 
    getTodayFuneral(){
     console.log('getTodayFuneral');
-    return this.http.get( this.settings.ApiBaseUrl +  '/funeral' ,{observe:'body',responseType:'json'});
+    return this.http.get( this.settings.ApiBaseUrl +  '/funeral/today-funeral-v2' ,{observe:'body',responseType:'json'});
   }
   getStatistics(){
     console.log('getStatistics');
