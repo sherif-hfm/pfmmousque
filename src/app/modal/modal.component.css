@@ -14,13 +14,42 @@
     padding: 15px;
     background-color: white;
     width: 35%;
+    max-height: 90vh;
     height: fit-content;
     margin: auto;
-    border-style:solid ;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    border-style: solid;
     border-width: 1px;
     border-color: black;
     box-shadow: 0 5px 10px rgb(40 64 37 / 50%);
+    /* Scrollbar: thin for Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(30, 58, 95, 0.45) rgba(30, 58, 95, 0.08);
+}
 
+/* Custom scrollbar for WebKit (Chrome, Safari, Edge) */
+.modalBox::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modalBox::-webkit-scrollbar-track {
+    background: rgba(30, 58, 95, 0.06);
+    border-radius: 4px;
+}
+
+.modalBox::-webkit-scrollbar-thumb {
+    background: rgba(30, 58, 95, 0.35);
+    border-radius: 4px;
+}
+
+.modalBox::-webkit-scrollbar-thumb:hover {
+    background: rgba(30, 58, 95, 0.5);
+}
+
+.modalBox::-webkit-scrollbar-thumb:active {
+    background: rgba(30, 58, 95, 0.6);
 }
 .closeBtn{
     position: relative;

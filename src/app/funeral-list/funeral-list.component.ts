@@ -47,8 +47,14 @@ export class FuneralListComponent implements OnInit {
     this.funeralService.getTodayFuneral().subscribe({
       next:(data:any)=>{
        console.log(data);
-       this.prayerTodayTotal = data.reduce((partialSum:any, p:any) => partialSum + p.Total, 0);
-       this.funeralList=data;
+       this.funeralList = (data || []).map((p: any) => {
+         const men = parseInt(p.men || '0', 10);
+         const women = parseInt(p.women || '0', 10);
+         const children = parseInt(p.children || '0', 10);
+         const total = men + women + children;
+         return { ...p, men, women, children, Total: total };
+       });
+       this.prayerTodayTotal = this.funeralList.reduce((partialSum: number, p: any) => partialSum + p.Total, 0);
       },
       error:(err:any)=>{
         console.log('http error');

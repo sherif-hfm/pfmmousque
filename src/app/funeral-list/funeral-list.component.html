@@ -1,100 +1,91 @@
-<div style="width: 100%;">
+<div class="funeral-list">
   <div class="cards-container">
-    <div class="card main"  >
-      <div style="text-align:center"  >
-        <div style="font-size:35px ;font-weight: 600;margin-top: 10px;">
-           <span>{{umalquraCalendar.getCurrentDate().dayName}}</span>
-        </div>
-        <div style="font-size:25px ;">
-          <span>{{arabicNums.toArabicNum(umalquraCalendar.getCurrentDate().year + '/' + umalquraCalendar.getCurrentDate().month + '/' + umalquraCalendar.getCurrentDate().day)}} هـ</span>
-        </div>
-        <div style="font-size:25px ;">
-          <span>{{arabicNums.toArabicNum(getCurrentDateV2())}} م</span>
-        </div>
-        <div style="font-size:20px; margin-bottom: 6px;">
-          <a class="location-link" href="https://maps.app.goo.gl/rR4tG5hT5QTyHLfu9" target="_blank" rel="noopener noreferrer" title="الموقع على خرائط جوجل">
-            <i class="fa-solid fa-location-dot"></i> الموقع  على الخريطة
-          </a>
-        </div>
-        <div style="font-size:35px ;">
-          <span>{{arabicNums.toArabicNum(prayerTodayTotal)}}</span>
-        </div>
-        <div style="font-size:25px ;">
-          <span>جنازة</span>
-        </div>
+    <section class="card card-main" aria-label="معلومات اليوم">
+      <div class="card-main-inner">
+        <p class="card-main-day">{{ umalquraCalendar.getCurrentDate().dayName }}</p>
+        <p class="card-main-date card-main-hijri">
+          {{ arabicNums.toArabicNum(umalquraCalendar.getCurrentDate().year + '/' + umalquraCalendar.getCurrentDate().month + '/' + umalquraCalendar.getCurrentDate().day) }} هـ
+        </p>
+        <p class="card-main-date card-main-gregorian">
+          {{ arabicNums.toArabicNum(getCurrentDateV2()) }} م
+        </p>
+        <a class="card-main-location" href="https://maps.app.goo.gl/rR4tG5hT5QTyHLfu9" target="_blank" rel="noopener noreferrer" title="الموقع على خرائط جوجل">
+          <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+          الموقع على الخريطة
+        </a>
+        <p class="card-main-total">{{ arabicNums.toArabicNum(prayerTodayTotal) }}</p>
+        <p class="card-main-label">جنازة</p>
       </div>
-    </div>
-    <div class="card" *ngFor="let prayer of funeralList" >
-      <div style="text-align:center" *ngIf="prayer.Total > 0"  >
-        <div style="color:black;font-size:35px ;margin-top: 10px;">
-          صلاة <span>{{prayer.prayerName}}</span>
-        </div>
-        <div style="color:rgb(3, 48, 13);font-size:25px ;">
-          عدد الجنائز <span>{{toArabicNum(prayer.Total)}}</span>
-        </div>
+    </section>
+
+    <article class="card card-prayer" *ngFor="let prayer of funeralList" [attr.aria-label]="'صلاة ' + prayer.prayerName">
+      <div class="card-prayer-inner" *ngIf="prayer.Total > 0">
+        <h2 class="card-prayer-title">صلاة <span>{{ prayer.prayerName }}</span></h2>
+        <p class="card-prayer-count">
+          عدد الجنائز <span class="card-prayer-num">{{ toArabicNum(prayer.Total) }}</span>
+        </p>
         <div class="info-container">
-          <div class="info" *ngIf="prayer.M > 0"> 
-            <div>رجال</div>
-            <div class="number">{{toArabicNum(prayer.M)}}</div>
+          <div class="info" *ngIf="prayer.men > 0">
+            <span class="info-label">رجال</span>
+            <span class="info-number">{{ toArabicNum(prayer.men) }}</span>
           </div>
-          <div class="info" *ngIf="prayer.F> 0">
-            <div>نساء</div>
-            <div class="number">{{toArabicNum(prayer.F)}}</div>
+          <div class="info" *ngIf="prayer.women > 0">
+            <span class="info-label">نساء</span>
+            <span class="info-number">{{ toArabicNum(prayer.women) }}</span>
           </div>
-          <div class="info" *ngIf="(prayer.B + prayer.G) > 0">
-            <div>اطفال</div>
-            <div class="number">{{toArabicNum(prayer.B + prayer.G)}}</div>
+          <div class="info" *ngIf="prayer.children > 0">
+            <span class="info-label">اطفال</span>
+            <span class="info-number">{{ toArabicNum(prayer.children) }}</span>
           </div>
         </div>
-        <div class="buttons">
-          <button class="btn" (click)="openDetailsPopup(prayer.prayerId)">عرض التفاصيل</button>
+        <div class="card-prayer-actions" *ngIf="prayer.prayerId">
+          <button type="button" class="btn btn-details" (click)="openDetailsPopup(prayer.prayerId)">
+            عرض التفاصيل
+          </button>
         </div>
       </div>
-    </div>
+    </article>
   </div>
 </div>
-<modal [(show)]="showdetails">
-<div class="dtlContainer" *ngIf="showdetails">
-  <div class="dtltTitle">
-    <span>تفاصيل الجنائز</span>
-  </div>
-  <div class="dtlGrid">
-    <div class="dtlHeader">اسم المتوفى</div>
-    <div class="dtlHeader">الجنس</div>
-    <div class="dtlHeader">مكان الدفن</div>
-    <div class="dtlHeader">رقم الإسعاف</div>
-    <div class="dtlHeader">رقم القبر</div>
-    <div class="dtlHeader">ملاحظات</div>
-    <ng-container *ngFor="let funeral of funeralDetails">
-      <div class="dtlCell">
-        <span class="dtlMobileLabel">اسم المتوفى:</span>
-        {{funeral.deadName}}
-      </div>
-      <div class="dtlCell">
-        <span class="dtlMobileLabel">الجنس:</span>
-        {{funeral.sex.Name}}
-      </div>
-      <div class="dtlCell">
-        <span class="dtlMobileLabel">مكان الدفن:</span>
-        {{funeral.purialplace.placeName}}
-      </div>
-      <div class="dtlCell">
-        <span class="dtlMobileLabel">رقم الإسعاف:</span>
-        {{funeral.ambulanceNo || '—'}}
-      </div>
-      <div class="dtlCell">
-        <span class="dtlMobileLabel">رقم القبر:</span>
-        {{funeral.graveNo || '—'}}
-      </div>
-      <div class="dtlCell">
-        <span class="dtlMobileLabel">ملاحظات:</span>
-        {{funeral.notes || '—'}}
-      </div>
-    </ng-container>
-  </div>
-  <div class="dtlDivider"></div>
-    <div style="text-align:center ;font-size: 18px;font-weight: bold;color: var(--mainTextColor)">
-      رحمهم الله وأسكنهم فسيح جناته
+
+<modal [(show)]="showdetails" class="details-modal">
+  <div class="dtlContainer" *ngIf="showdetails">
+    <h2 class="dtlTitle">تفاصيل الجنائز</h2>
+    <div class="dtlGrid" role="table" aria-label="قائمة الجنائز">
+      <div class="dtlHeader" role="columnheader">اسم المتوفى</div>
+      <div class="dtlHeader" role="columnheader">الجنس</div>
+      <div class="dtlHeader" role="columnheader">مكان الدفن</div>
+      <div class="dtlHeader" role="columnheader">رقم الإسعاف</div>
+      <div class="dtlHeader" role="columnheader">رقم القبر</div>
+      <div class="dtlHeader" role="columnheader">ملاحظات</div>
+      <ng-container *ngFor="let funeral of funeralDetails">
+        <div class="dtlCell" role="cell">
+          <span class="dtlMobileLabel">اسم المتوفى:</span>
+          {{ funeral.deadName }}
+        </div>
+        <div class="dtlCell" role="cell">
+          <span class="dtlMobileLabel">الجنس:</span>
+          {{ funeral.sex.Name }}
+        </div>
+        <div class="dtlCell" role="cell">
+          <span class="dtlMobileLabel">مكان الدفن:</span>
+          {{ funeral.purialplace.placeName }}
+        </div>
+        <div class="dtlCell" role="cell">
+          <span class="dtlMobileLabel">رقم الإسعاف:</span>
+          {{ funeral.ambulanceNo || '—' }}
+        </div>
+        <div class="dtlCell" role="cell">
+          <span class="dtlMobileLabel">رقم القبر:</span>
+          {{ funeral.graveNo || '—' }}
+        </div>
+        <div class="dtlCell" role="cell">
+          <span class="dtlMobileLabel">ملاحظات:</span>
+          {{ funeral.notes || '—' }}
+        </div>
+      </ng-container>
     </div>
-</div>
+    <div class="dtlDivider"></div>
+    <p class="dtlFooter">رحمهم الله وأسكنهم فسيح جناته</p>
+  </div>
 </modal>

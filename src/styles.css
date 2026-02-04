@@ -2,9 +2,13 @@
 
 /* html, body { height: 100%; } */
 :root {
-     --appMedia:screen and (max-width: 991.98px);
-     --mainTextColor: rgb(14, 62, 194);
-     --secondTextColor: rgb(102, 139, 243);
+     --appMedia: screen and (max-width: 991.98px);
+     /* Palette from site logo: deep blue, maroon/brown */
+     --mainTextColor: #1e3a5f;
+     --secondTextColor: #7b3d4a;
+     --mainR: 30;
+     --mainG: 58;
+     --mainB: 95;
    }
    
 body { 
