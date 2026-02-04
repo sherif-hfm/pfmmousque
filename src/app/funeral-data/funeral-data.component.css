@@ -1,178 +1,304 @@
-.container{
-    width: 100%;
-}
-.search{
-    width: 100%;
-    margin: auto;
-    margin-bottom: 20px;
-}
-.details{
-    width: 100%;
-    /* margin: auto;     */
-}
-.title{
-    width: 100%;
-    text-align: center;
-    font-size:35px;
-    font-weight: bold;
-    color:var(--mainTextColor);
-}
-.searchForm{
-    color:var(--mainTextColor);
-    font-size:18px;
+.funeral-data {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem;
+  box-sizing: border-box;
+  font-family: 'Cairo', sans-serif;
+  direction: rtl;
 }
 
-  .btn{
-      margin-right: 15px;
-      min-width: 80px;
-      padding: 0;
+.page-header {
+  margin-bottom: 1.25rem;
+}
+
+.page-title {
+  width: 100%;
+  text-align: center;
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-weight: 800;
+  color: var(--mainTextColor);
+  margin: 0;
+}
+
+/* Search */
+.search-section {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.search-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--mainTextColor);
+  font-size: 1rem;
+}
+
+.search-label {
+  display: block;
+  font-weight: 600;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 140px;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid rgba(var(--mainR), var(--mainG), var(--mainB), 0.25);
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.search-input:focus {
+  border-color: var(--mainTextColor);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(var(--mainR), var(--mainG), var(--mainB), 0.15);
+}
+
+/* Buttons */
+.btn {
+  padding: 0.5rem 1rem;
+  font-family: 'Cairo', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: filter 0.2s ease, transform 0.05s ease;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--mainTextColor);
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  background-color: var(--mainTextColor);
+  color: white;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.08);
+}
+
+.btn-success {
+  background-color: var(--secondTextColor);
+  color: white;
+}
+
+.btn-success:hover {
+  filter: brightness(1.08);
+}
+
+.btn-danger {
+  background-color: var(--secondTextColor);
+  color: white;
+  filter: brightness(0.9);
+}
+
+.btn-danger:hover {
+  filter: brightness(1);
+}
+
+.toolbar {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+/* Data grid */
+.details {
+  width: 100%;
+}
+
+.data-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 10% 14% 8% 8% 12% 10% 10% 14% 14%;
+  color: var(--mainTextColor);
+  font-size: 0.95rem;
+  overflow-x: auto;
+  border-radius: 10px;
+  border: 1px solid rgba(var(--mainR), var(--mainG), var(--mainB), 0.15);
+  background: white;
+  box-shadow: 0 2px 10px rgba(var(--mainR), var(--mainG), var(--mainB), 0.06);
+}
+
+.grid-header {
+  font-weight: 700;
+  padding: 0.75rem 0.5rem;
+  background: rgba(var(--mainR), var(--mainG), var(--mainB), 0.08);
+  border-bottom: 2px solid var(--mainTextColor);
+  text-align: right;
+}
+
+.grid-cell {
+  padding: 0.65rem 0.5rem;
+  border-bottom: 1px solid rgba(var(--mainR), var(--mainG), var(--mainB), 0.1);
+  text-align: right;
+  word-break: break-word;
+}
+
+.grid-cell-odd {
+  background-color: rgba(var(--mainR), var(--mainG), var(--mainB), 0.04);
+}
+
+.grid-mobile-label {
+  display: none;
+  font-weight: 700;
+  margin-left: 0.35rem;
+}
+
+.grid-cell-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* Edit section */
+.edit-section {
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background: white;
+  border: 1px solid rgba(var(--mainR), var(--mainG), var(--mainB), 0.2);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(var(--mainR), var(--mainG), var(--mainB), 0.1);
+  color: var(--mainTextColor);
+  font-size: 1rem;
+}
+
+.edit-section-title {
+  width: 100%;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--mainTextColor);
+  margin: 0 0 1.25rem 0;
+}
+
+.edit-form {
+  padding-top: 0.5rem;
+}
+
+.form-row {
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.form-input {
+  width: 100%;
+  max-width: 320px;
+  padding: 0.55rem 0.75rem;
+  font-size: 1rem;
+  font-family: 'Cairo', sans-serif;
+  border: 1px solid rgba(var(--mainR), var(--mainG), var(--mainB), 0.25);
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  border-color: var(--mainTextColor);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(var(--mainR), var(--mainG), var(--mainB), 0.15);
+}
+
+.form-select,
+.form-textarea {
+  width: 100%;
+  max-width: 320px;
+}
+
+.form-textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.form-actions {
+  text-align: center;
+  margin-top: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.form-actions .btn {
+  min-width: 100px;
+}
+
+/* Tablet */
+@media screen and (max-width: 1200px) and (min-width: 769px) {
+  .data-grid {
+    grid-template-columns: repeat(9, minmax(70px, 1fr));
+    font-size: 0.85rem;
   }
-  .btn-success{
-    background-color: var(--secondTextColor);
-    color: white;
-  }
-  .btn-danger{
-    background-color: red;
-    color: white;
+
+  .grid-cell {
+    padding: 0.5rem 0.35rem;
   }
 
-.dataGrid{
-    width: 100%;
-    display: grid;
-    grid-template-columns: 10% 14% 8% 8% 12% 10% 10% 14% 14%;
-    /* row-gap: 1rem; */
-    color:var(--mainTextColor);
-    font-size:16px;
-    overflow-x: auto;
+  .edit-section {
+    width: 85%;
+    padding: 1.25rem;
+  }
 }
 
+/* Mobile */
+@media screen and (max-width: 768px) {
+  .funeral-data {
+    padding: 0.75rem;
+  }
 
-.header{
-  font-weight: bold;
-}
+  .data-grid {
+    grid-template-columns: 1fr;
+    font-size: 0.9rem;
+  }
 
-.gridCell{
-   border-bottom-style:solid ;
-   border-bottom-width: 1px;
-   border-color:gray ;
-   padding-bottom: 10px;
-   padding-top: 10px;
-   text-align: right;
-    
-}
-.oddGridCell{
-background-color:rgb(231, 245, 231,0.7);
-
-}
-
-.mobileTitle{
+  .grid-header {
     display: none;
-}
-.rowButtons{
-   
-}
+  }
 
-.editFormContainer{
-    width: 50%;
-    color:var(--mainTextColor);
-    font-size:18px;
-    margin: auto;
-    border-style:solid ;
-    border-width:2px ;
-    border-color: var(--secondTextColor);
-    background-color:white;
-    font-family: 'Cairo', sans-serif;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3)  ; 
-    padding: 30px;
-}
-.editFormContainer .title{
-    width: 100%;
+  .grid-cell {
+    border-bottom: none;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .grid-cell-odd {
+    background-color: transparent;
+  }
+
+  .grid-mobile-label {
+    display: inline;
+  }
+
+  .grid-cell-actions {
     text-align: center;
-    font-size:25px;
-    font-weight: bold;
-    color:var(--mainTextColor);
+    justify-content: center;
+    border-bottom: 2px solid var(--secondTextColor);
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
 
-   
-}
-.editForm{
-    padding-top: 20px;
-    width: 50%;
-    margin: auto;
-}
-.inputContainer{
-    
-}
-.inputLable{
-    display: block;
-}
-.input{
-    width: 300px;
-}
-.formButtons{
-    text-align: center;
-}
+  .edit-section {
+    width: 100%;
+    padding: 1rem;
+  }
 
-/* Tablet view - show grid with smaller columns */
-@media screen and (max-width: 1200px) and (min-width: 769px){
-.dataGrid{
-    display: grid;
-    width: 100%;
-    grid-template-columns: repeat(9, minmax(80px, 1fr));
-    font-size: 14px;
-}
-.gridCell{
-    padding: 8px 4px;
-    word-break: break-word;
-}
-.editFormContainer{
-    width: 80%;
-}
-}
+  .edit-form .form-input {
+    max-width: 100%;
+  }
 
-/* Mobile view - stack cells vertically */
-@media screen and (max-width: 768px){
-.dataGrid{
-    display: grid;
-    width: 100%;
-    grid-template-columns: 100% ;
-}
-.header{
- display: none; 
-}
-.gridCell{
-    border-width: 0px;
-    padding: 5px 0px;
- }
- .oddGridCell{
-    background-color:transparent
-    }
-.mobileTitle{
-    display:inline;
-    font-weight: bold;
-    margin-left: 5px;
-}
-.details{
-    width: 100%;
-} 
-.rowButtons{
-   text-align: center;
-   border-bottom-style:solid ;
-   border-bottom-width: 2px;
-   border-color: var(--secondTextColor);
-   padding-bottom: 15px;
-   padding-top: 10px;
-   margin-bottom: 15px;
-} 
-.editFormContainer{
-    width: 100%;
-    padding: 15px;
-}
-.editForm{
-    padding-top: 20px;
-    width: 100%;
-    margin: auto;
-}
-.input{
-    width: 100%;
-}
+  .form-select,
+  .form-textarea {
+    max-width: 100%;
+  }
 }

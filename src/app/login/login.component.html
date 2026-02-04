@@ -1,38 +1,43 @@
 <alert [(show)]="showAlert">
-    <h6>
-        {{alertMessage}}
-    </h6>
+  <h6>{{ alertMessage }}</h6>
 </alert>
 <div class="login-page">
-<div class="container">
-    <div class="cards-container">
-        <div class="card">
-            <div class="title">
-                <span>تسجيل الدخول</span>
-             </div>
-             <div class="subTitle">
-                <span>مسؤول صفحة وحدة تجهيز الأموات </span>
-             </div>
-            <div class="form" [formGroup]="loginFrom">
-                <div class="formInput">
-                    <!-- <label>اسم المستخدم</label> -->
-                    <input name="userLogin" type="text" formControlName="userLogin" value="user1" placeholder="اسم المستخدم">
-                </div>
-                <div class="formInput">
-                    <!-- <label>كلمة المرور</label> -->
-                    <input name="userLogin" type="password" formControlName="password" value="123" placeholder="كلمة المرور" (keyup.enter)="login()" >
-                </div>
-                <div class="formInput" style="text-align:right ;">
-                    <!-- <label>كلمة المرور</label> -->
-                    <input  type="checkbox" class="largerCheckbox">
-                    <span>تذكرني</span>
-                </div>
-                <!-- <p>Form Status: {{ loginFrom.status }}</p> -->
-                <div class="formButtons">
-                    <button class="btn" [disabled]="loginFrom.status == 'INVALID'" (click)="login()">دخول</button>
-                </div>
-            </div>
+  <div class="login-container">
+    <div class="login-card">
+      <h1 class="login-title">تسجيل الدخول</h1>
+      <p class="login-subtitle">مسؤول صفحة وحدة تجهيز الأموات</p>
+      <form [formGroup]="loginFrom" class="login-form" (ngSubmit)="login()">
+        <div class="form-group">
+          <input
+            name="userLogin"
+            type="text"
+            formControlName="userLogin"
+            placeholder="اسم المستخدم"
+            class="form-input"
+            autocomplete="username"
+          />
         </div>
+        <div class="form-group">
+          <input
+            name="password"
+            type="password"
+            formControlName="password"
+            placeholder="كلمة المرور"
+            class="form-input"
+            autocomplete="current-password"
+            (keyup.enter)="login()"
+          />
+        </div>
+        <div class="form-group form-group-remember">
+          <input type="checkbox" id="remember" class="form-checkbox" />
+          <label for="remember" class="form-remember-label">تذكرني</label>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-login" [disabled]="loginFrom.status === 'INVALID'">
+            دخول
+          </button>
+        </div>
+      </form>
     </div>
-</div>
+  </div>
 </div>

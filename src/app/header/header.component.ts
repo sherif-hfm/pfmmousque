@@ -48,6 +48,10 @@ export class HeaderComponent implements OnInit {
     this.showMenu=!this.showMenu;
   }
 
+  closeMenu(): void {
+    this.showMenu = false;
+  }
+
   logout(e:any){
     this.showMenu=false;
     this.authService.logout().subscribe({

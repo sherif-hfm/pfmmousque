@@ -1,78 +1,65 @@
-<!-- Toolbar -->
-<!-- <div class="topInfo">
-
-</div> -->
 <div class="header">
-    <div class="headerLogoTitle" [ngClass]="{'headerLogoTitleShadow':!showMenu}">
-      <div class="headerLogo">
-        <img   alt="Angular Logo"  src="assets/images/logo.png" />
-      </div>
-      <div class="headerTitle">
-        <span>جامع الأمير فهد بن محمد آل سعود  </span>
-        <span class="headerSubTitle">وحدة تجهيز الأموات</span>
-      </div>
-      <div class="headerMenuIcon" (click)="mobileMenuClick($event)">
-        <i class="fa-solid fa-bars" *ngIf="!showMenu"></i>
-        <i class="fa-solid fa-xmark" style="font-size: 28px;" *ngIf="showMenu"></i>
-      </div>
+  <div class="headerLogoTitle" [ngClass]="{'headerLogoTitleShadow':!showMenu}">
+    <div class="headerLogo">
+      <img alt="شعار الجامع" src="assets/images/logo.png" />
     </div>
-    <div class="headerNav" [ngClass]="{'show':showMenu}">
+    <div class="headerTitle">
+      <span>جامع الأمير فهد بن محمد آل سعود  </span>
+      <span class="headerSubTitle">وحدة تجهيز الأموات</span>
+    </div>
+    <button type="button" class="headerMenuIcon" (click)="mobileMenuClick($event)" [attr.aria-expanded]="showMenu" aria-label="القائمة">
+      <i class="fa-solid fa-bars" *ngIf="!showMenu"></i>
+      <i class="fa-solid fa-xmark headerMenuIconClose" *ngIf="showMenu"></i>
+    </button>
+  </div>
+  <div class="navOverlay" *ngIf="showMenu" (click)="closeMenu()" role="presentation"></div>
+  <div class="navDrawer" [class.open]="showMenu">
+    <nav class="headerNav" aria-label="القائمة الرئيسية">
       <div class="rightNav">
-        <a class="navItem"   routerLink="/">
+        <a class="navItem" routerLink="/" routerLinkActive="navItemActive" [routerLinkActiveOptions]="{exact: true}">
           <i class="fa-solid fa-house"></i>
-          <span>
-            الرئيسية 
-          </span>
+          <span>الرئيسية</span>
         </a>
-        <a class="navItem" routerLink="/todayview">
+        <a class="navItem" routerLink="/todayview" routerLinkActive="navItemActive">
           <i class="fa-solid fa-eye"></i>
-          <span>
-            جنائز اليوم
-          </span>
+          <span>جنائز اليوم</span>
         </a>
-        <a class="navItem"   routerLink="/admin" *ngIf="authService.isAuth">
+        <a class="navItem" routerLink="/admin" routerLinkActive="navItemActive" *ngIf="authService.isAuth">
           <i class="fa-solid fa-calendar-check"></i>
-          <span>
-            الادارة
-          </span>
+          <span>الادارة</span>
         </a>
-        <a class="navItem"   routerLink="/monthlyReport" *ngIf="authService.isAuth">
+        <a class="navItem" routerLink="/monthlyReport" routerLinkActive="navItemActive" *ngIf="authService.isAuth">
           <i class="fas fa-table"></i>
-          <span>
-            التقرير
-          </span>
+          <span>التقرير</span>
         </a>
-        <a class="navItem"   (click)="openStatisticsPopup()" >
+        <a class="navItem" (click)="openStatisticsPopup()">
           <i class="fa-solid fa-chart-line"></i>
-          <span>
-            احصائيات
-          </span>
+          <span>احصائيات</span>
         </a>
       </div>
       <div class="leftNav">
-        <a class="navItem"   routerLink="/login" *ngIf="!authService.isAuth" >
+        <a class="navItem" routerLink="/login" routerLinkActive="navItemActive" *ngIf="!authService.isAuth">
           <i class="fas fa-user-lock"></i>
-          <span>
-            تسجيل الدخول
-          </span>
+          <span>تسجيل الدخول</span>
         </a>
-        <a class="navItem"  (click)="logout($event)" *ngIf="authService.isAuth">
+        <a class="navItem" (click)="logout($event)" *ngIf="authService.isAuth">
           <i class="fa-solid fa-person-walking-arrow-right"></i>
-          تسجيل الخروج
+          <span>تسجيل الخروج</span>
         </a>
       </div>
-    </div>
+    </nav>
+  </div>
 </div>
 
 <modal [(show)]="showStatistics">
   <div class="statContainer" *ngIf="showStatistics">
     <div class="statTitle">
-       <span> احصائيات</span>
+      <span>احصائيات</span>
     </div>
     <div class="statSubTitle">
-      <span>جنائز جامع الأمير فهد بن محمد آل سعود  </span>
-   </div>
-    <div style="display: grid;grid-template-columns: 70% 10% 20%;grid-gap:10px;;font-size: 14px; ">
+      <span>جنائز جامع الأمير فهد بن محمد آل سعود</span>
+    </div>
+    <div class="statGrid">
       <div>جنائز أمس</div>
       <div class="statNum">{{arabicNums.toArabicNum(statistics.yesterday)}}</div>
       <div>جنازة</div>
@@ -89,32 +76,9 @@
       <div class="statNum">{{arabicNums.toArabicNum(statistics.lastYear)}}</div>
       <div>جنازة</div>
     </div>
-    <div style="width:300px;height:1px;background-color: var(--mainTextColor) ;margin-left: auto;margin-right: auto;margin-top: 10px;margin-bottom: 10px;"></div>
-    <div style="text-align:center ;font-size: 18px;font-weight: bold;color: var(--mainTextColor)">
+    <div class="statDivider"></div>
+    <div class="statFooter">
       رحمهم الله وأسكنهم فسيح جناته
     </div>
   </div>
 </modal>
-<!-- <div
-  class="modal"
-  tabindex="-1"
-  role="dialog"
-  [ngStyle]="{'display':statisticsDisplayStyle}"  style="z-index: 99999999" *ngIf="showStatistics">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">الاحصائيات</h4>
-      </div>
-      
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success" (click)="closeStatisticsPopup()">
-          اغلاق
-        </button>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-    
-    
-      
