@@ -4,12 +4,20 @@
   box-sizing: border-box;
 }
 
+.main-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
 .cards-container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1.25rem;
   padding: 1rem 0;
 }
@@ -37,7 +45,6 @@
   background-image: url(/assets/images/cardbg.png);
   background-size: cover;
   background-position: center;
-  grid-column: 1 / -1;
   isolation: isolate;
 }
 
@@ -127,6 +134,8 @@
   min-height: 220px;
   display: flex;
   flex-direction: column;
+  width: 280px;
+  flex-shrink: 0;
 }
 
 .card-prayer-inner {
@@ -291,12 +300,11 @@
 /* Tablet */
 @media screen and (max-width: 990px) {
   .cards-container {
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 1rem;
   }
 
-  .card-main {
-    grid-column: 1 / -1;
+  .card-prayer {
+    width: 260px;
   }
 
   .dtlContainer {
@@ -321,10 +329,20 @@
     padding: 0 0.25rem;
   }
 
+  .main-container {
+    padding: 0.75rem 0;
+  }
+
   .cards-container {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: center;
     gap: 1rem;
     padding: 0.75rem 0;
+  }
+
+  .card-prayer {
+    width: 100%;
+    max-width: 320px;
   }
 
   .card-main-inner {

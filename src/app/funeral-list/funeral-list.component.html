@@ -1,5 +1,5 @@
 <div class="funeral-list">
-  <div class="cards-container">
+  <div class="main-container">
     <section class="card card-main" aria-label="معلومات اليوم">
       <div class="card-main-inner">
         <p class="card-main-day">{{ umalquraCalendar.getCurrentDate().dayName }}</p>
@@ -17,7 +17,9 @@
         <p class="card-main-label">جنازة</p>
       </div>
     </section>
+  </div>
 
+  <div class="cards-container">
     <article class="card card-prayer" *ngFor="let prayer of funeralList" [attr.aria-label]="'صلاة ' + prayer.prayerName">
       <div class="card-prayer-inner" *ngIf="prayer.Total > 0">
         <h2 class="card-prayer-title">صلاة <span>{{ prayer.prayerName }}</span></h2>
